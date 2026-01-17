@@ -27,6 +27,7 @@ After installation, invoke skills with:
 | **R Analyst** | Statistical analysis in R for publication | `/r-analyst` |
 | **Stata Analyst** | Statistical analysis in Stata for publication | `/stata-analyst` |
 | **Interview Analyst** | Qualitative analysis of interview data | `/interview-analyst` |
+| **Abductive Analyst** | Abductive analysis (Timmermans & Tavory) | `/abductive-analyst` |
 | **Text Analyst** | Computational text analysis (R/Python) | `/text-analyst` |
 
 ## Unified Phased Architecture
@@ -54,6 +55,18 @@ All skills follow the same phased structure with pauses between phases:
 | **3: Interpretation** | Move from "what" to "why" | User reviews explanations |
 | **4: Quality Check** | Evaluate against quality indicators | User addresses gaps |
 | **5: Synthesis** | Integrate into coherent argument | Analysis complete |
+
+### Abductive Analysis (Timmermans & Tavory)
+
+| Phase | Goal | Pause Point |
+|-------|------|-------------|
+| **0: Theoretical Preparation** | Build theoretical sensitivity | User confirms theoretical map |
+| **1: Familiarization** | Open coding, flag surprises | User reviews initial codes |
+| **2: Theoretical Casing** | Apply multiple lenses to excerpts | User reviews casings |
+| **3: Anomaly Analysis** | Identify contradictions and puzzles | User confirms focus |
+| **4: Memo Writing** | Develop tentative theory | User tests interpretations |
+| **5: Integration** | Test against full dataset | User reviews synthesis |
+| **6: Writing Up** | Rhetorical abduction for publication | Analysis complete |
 
 ### Text Analysis (R/Python)
 
@@ -87,6 +100,10 @@ plugins/sociology-analysis/
     ├── interview-analyst/
     │   ├── SKILL.md          # Main interview analyst skill
     │   └── phases/           # Phase agent files
+    │
+    ├── abductive-analyst/
+    │   ├── SKILL.md          # Main abductive analyst skill
+    │   └── phases/           # Phase agent files (7 phases)
     │
     └── text-analyst/
         ├── SKILL.md          # Main text analyst skill

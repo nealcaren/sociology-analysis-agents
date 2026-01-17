@@ -21,6 +21,7 @@ After installation, invoke any skill:
 | **R Statistical Analyst** | `/r-analyst` | Phased quantitative analysis workflow using R (DiD, IV, matching, etc.) |
 | **Stata Statistical Analyst** | `/stata-analyst` | Phased quantitative analysis workflow using Stata |
 | **Interview Analyst** | `/interview-analyst` | Pragmatic qualitative analysis for interview data |
+| **Abductive Analyst** | `/abductive-analyst` | Abductive analysis (Timmermans & Tavory) for theory-generating qualitative research |
 | **Text Analyst** | `/text-analyst` | Computational text analysis with R and Python (topic models, sentiment, classification) |
 
 Each skill uses a **phased workflow** with mandatory pauses between phases for user review and decision-making.
@@ -57,6 +58,24 @@ Phase 3: Interpretation → Identify patterns, develop explanations
 Phase 4: Quality Check → Assess against 5 quality indicators
     ↓ [User Review]
 Phase 5: Synthesis → Write publication-ready sections
+```
+
+### Abductive Analysis (Timmermans & Tavory)
+
+```
+Phase 0: Theoretical Preparation → Build theoretical sensitivity
+    ↓ [User Review]
+Phase 1: Familiarization → Open coding, flag surprises
+    ↓ [User Review]
+Phase 2: Theoretical Casing → Apply multiple theoretical lenses
+    ↓ [User Review]
+Phase 3: Anomaly Analysis → Identify contradictions and puzzles
+    ↓ [User Review]
+Phase 4: Memo Writing → Develop tentative theory
+    ↓ [User Review]
+Phase 5: Integration → Test theory against full dataset
+    ↓ [User Review]
+Phase 6: Writing Up → Rhetorical abduction for publication
 ```
 
 ### Computational Text Analysis (R/Python)
@@ -97,6 +116,10 @@ plugins/sociology-analysis/
     │   ├── SKILL.md              # Interview orchestrator
     │   └── phases/               # Phase agents
     │
+    ├── abductive-analyst/
+    │   ├── SKILL.md              # Abductive analysis orchestrator
+    │   └── phases/               # Phase agents (7 phases)
+    │
     └── text-analyst/
         ├── SKILL.md              # Text analysis orchestrator
         ├── phases/               # Phase agents
@@ -122,6 +145,13 @@ plugins/sociology-analysis/
 - **Quality indicators**: Cognitive empathy, heterogeneity, palpability, follow-up, self-awareness
 - **Evidence selection**: Luminous exemplars, not just typical quotes
 - **Methods transparency**: Detailed templates for sampling, recruitment, saturation
+
+### Abductive Analysis Skills
+- **Theory-first approach**: Build theoretical sensitivity before data engagement
+- **Map and compass theories**: Both substantive and grammatical frameworks
+- **Anomaly detection**: Systematic identification of contradictions and puzzles
+- **Theoretical casing**: View data through multiple theoretical lenses
+- **Rhetorical abduction**: Structure writing as what we knew → surprise → new theory
 
 ### Text Analysis Skills
 - **Dual-language support**: R for topic models/STM; Python for transformers/BERTopic
