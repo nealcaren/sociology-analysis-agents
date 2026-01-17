@@ -1,0 +1,60 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude Code local files
+.claude/
+
+# R
+.Rhistory
+.Rdata
+.RDataTmp
+.Ruserdata
+
+# Stata
+*.log
+*.smcl
+
+# Python (if any scripts)
+__pycache__/
+*.py[cod]
+.env
+
+# Data files (users should not commit data)
+*.dta
+*.csv
+*.xlsx
+*.sav
+*.rds
+*.RData
+
+# Output files
+*.pdf
+*.png
+*.jpg
+*.rtf
+*.tex
+*.docx
+
+# Quarto book (published separately)
+quarto_book/
+
+# Original/draft skill versions (consolidated into skills/)
+abduct/
+pragmatic-qual/
+untitled folder/
+
+# Keep the skills and structure, not the working files
+analysis/
+data/
+output/
+logs/
+memos/
+interviews/
