@@ -1,6 +1,6 @@
 # Teaching Techniques: Evidence-Based Strategies for Engaging Lectures
 
-This guide distills principles from James Lang's *Small Teaching*, Carmine Gallo's *Talk Like TED*, and evidence-based pedagogy research.
+This guide distills principles from James Lang's *Small Teaching*, Carmine Gallo's *Talk Like TED*, Ken Bain's *What the Best College Teachers Do*, Norman Eng's *Teaching College*, and evidence-based pedagogy research.
 
 ## The Science of Attention
 
@@ -29,7 +29,35 @@ Students remember best what happens at the **beginning** and **end** of class.
 
 ## Opening Techniques (First 5 Minutes)
 
-### 1. Prediction Questions
+Student attention is highest at the beginning—use it strategically.
+
+### Six Proven Opening Strategies (Eng)
+
+1. **Provocative Question**
+   - Relates to an underlying experience students share
+   - "When have you been punished for something you didn't do?"
+
+2. **Striking Statistic or Fact**
+   - Surprises and intrigues
+   - "Only 20-30% of what you hear in a lecture is retained..."
+
+3. **Anecdote or Personal Story**
+   - Most powerful way to connect emotionally
+   - "When I was taking accounting, I fell asleep every class..."
+
+4. **Quotation or Aphorism**
+   - Provides material for deconstruction
+   - "Einstein said 'Imagination is more important than knowledge.' Do you agree?"
+
+5. **Analogy**
+   - Simplifies complex concepts
+   - "Think of the cell membrane like a nightclub bouncer..."
+
+6. **Scenario or Problem**
+   - Puts students in someone's shoes
+   - "You're a manager and an employee just filed a complaint against your top performer..."
+
+### Prediction Questions (Lang)
 Ask students to predict before revealing content.
 
 **Why it works:**
@@ -43,7 +71,7 @@ Ask students to predict before revealing content.
 - "Before I show you the data, guess the percentage."
 - "What would you expect the outcome to be?"
 
-### 2. Prior Knowledge Activation
+### Prior Knowledge Activation
 Ask what students already know before teaching new material.
 
 **Examples:**
@@ -51,15 +79,8 @@ Ask what students already know before teaching new material.
 - "Write down 3 things you associate with..."
 - "Turn to your neighbor and share what you remember about..."
 
-### 3. The Hook (Talk Like TED)
-Grab attention in the first 60 seconds with:
-- A surprising statistic
-- A provocative question
-- A brief story
-- A mystery or puzzle
-- A bold claim
-
-**The ABT Structure:**
+### The ABT Hook (Talk Like TED)
+Grab attention with narrative tension:
 - **And** (setup): "We know that class sizes are increasing, AND students are distracted..."
 - **But** (conflict): "BUT the research shows something surprising..."
 - **Therefore** (resolution): "THEREFORE, we need to rethink..."
@@ -321,6 +342,90 @@ These can be used immediately with no preparation:
 
 ---
 
+## Nine "Touches" for Engagement (Eng)
+
+Following marketing principles, students need multiple ways to engage with information:
+
+| Touch | Description | Best For |
+|-------|-------------|----------|
+| **Discussion** | Open-ended, interspersed throughout | Exploring perspectives |
+| **Debate** | Four-corners format; assign opposing views | Broadening perspective |
+| **Small Groups** | 4-5 students problem-solving | Collaborative learning |
+| **Surveys/Inventories** | Self-discovery tools | Making topics personal |
+| **Role-Play** | Act out scenarios + debrief | Experiencing concepts |
+| **Demonstration** | Predict-experience-reflect | Revealing misconceptions |
+| **Student Presentations** | Peer teaching (structured) | Deepening understanding |
+| **Case Studies** | Real-world problem-solving | Application practice |
+| **Guest Speakers** | Experts with credibility | Real-world connection |
+
+---
+
+## What the Best Teachers Do (Bain)
+
+Ken Bain studied exceptional college teachers for 15 years. Key findings:
+
+### The Fundamental Question Shift
+Less effective teachers ask: "What will I cover today?"
+Best teachers ask: "What do I want students to be able to DO by the end?"
+
+### Creating a Natural Critical Learning Environment
+The best teachers create conditions where students:
+- Face intriguing, important problems
+- Have genuine choice and input
+- Work collaboratively
+- Receive non-judgmental feedback
+- Can fail safely before high-stakes assessment
+
+### How They Treat Students
+- **Trust**: Believe students want to learn and can learn
+- **Investment**: Focus on helping students succeed, not displaying brilliance
+- **Humility**: Share their own struggles and learning journey
+- **Safety**: Create environments where no question is stupid
+
+### Lecture Excellence (Bain)
+When lecturing, the best teachers:
+- Treat lectures as conversation, not performance
+- Move around the room; avoid podiums
+- Change pace every 10-12 minutes
+- Ask rhetorical questions and wait for response
+- Watch student body language and adjust
+- Use "warm language" that tells the complete story
+
+### Warm Language (Feynman Principle)
+- Tell the complete story from the beginning
+- Work forward step-by-step
+- Keep language present-tense and involving
+- Begin with simple generalizations, add complexity
+- Use familiar language before specialized vocabulary
+- Employ metaphors and analogies first
+
+### Self-Assessment
+All the best teachers:
+- Collect ongoing feedback from students
+- Videotape themselves and review
+- Remain open to change
+- Never assume their teaching is optimal
+
+---
+
+## The Curse of Knowledge
+
+Once you master something, you forget how hard it was to learn.
+
+**Symptoms:**
+- Using jargon students don't know
+- Assuming connections are obvious
+- Moving too fast through "basic" material
+- Not understanding why students are confused
+
+**Solutions:**
+- Always activate prior knowledge first
+- Use think-aloud to model your reasoning
+- Ask students to explain in their own words
+- Check for understanding frequently
+
+---
+
 ## Key Principles Summary
 
 1. **Retrieval > Review**: Testing IS learning
@@ -333,6 +438,8 @@ These can be used immediately with no preparation:
 8. **Practice the skill**: In-class practice with feedback
 9. **Belong to learn**: Build community and connection
 10. **Small = powerful**: 5-minute interventions compound
+11. **Ask better questions**: "What can they DO?" not "What will I cover?"
+12. **Trust students**: Believe they can and want to learn
 
 ---
 

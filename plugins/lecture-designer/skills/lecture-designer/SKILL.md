@@ -180,7 +180,8 @@ These books inform the pedagogical approach (not included due to copyright):
 
 **Teaching & Pedagogy:**
 - Lang, James M. *Small Teaching* (2nd ed.) - Evidence-based teaching strategies
-- Bain, Ken. *What the Best College Teachers Do* - Research on excellent teaching
+- Bain, Ken. *What the Best College Teachers Do* - Research on exceptional teachers
+- Eng, Norman. *Teaching College* - Student-centered techniques and the 9 "touches"
 - Gallo, Carmine. *Talk Like TED* - Presentation and engagement techniques
 
 **Visual Design:**
