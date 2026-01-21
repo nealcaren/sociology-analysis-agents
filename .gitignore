@@ -59,3 +59,6 @@ logs/
 memos/
 interviews/
 teaching/
+
+# Local workspace for testing/development
+_workspace/
