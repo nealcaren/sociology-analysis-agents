@@ -1,0 +1,11 @@
+{
+  "name": "lit-synthesis",
+  "version": "1.0.0",
+  "description": "Deep reading and synthesis of literature corpus. Theoretical mapping, thematic clustering, and debate identification using Zotero MCP for full-text access.",
+  "author": {
+    "name": "Neal Caren"
+  },
+  "license": "MIT",
+  "keywords": ["literature-synthesis", "Zotero", "theoretical-mapping", "sociology", "research"],
+  "skills": "./skills/"
+}

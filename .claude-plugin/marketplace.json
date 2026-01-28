@@ -153,8 +153,8 @@
       "strict": true
     },
     {
-      "name": "lit-review",
-      "source": "./plugins/lit-review",
+      "name": "lit-search",
+      "source": "./plugins/lit-search",
       "description": "Build systematic literature databases using OpenAlex API. Phased workflow for search, screening, snowballing, annotation, and synthesis with structured user interaction.",
       "version": "1.0.0",
       "author": {
@@ -162,10 +162,46 @@
       },
       "license": "MIT",
       "keywords": [
-        "literature-review",
+        "literature-search",
         "OpenAlex",
         "bibliography",
         "systematic-review",
+        "research"
+      ],
+      "strict": true
+    },
+    {
+      "name": "lit-synthesis",
+      "source": "./plugins/lit-synthesis",
+      "description": "Deep reading and synthesis of literature corpus. Theoretical mapping, thematic clustering, and debate identification using Zotero MCP for full-text access.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Neal Caren"
+      },
+      "license": "MIT",
+      "keywords": [
+        "literature-synthesis",
+        "Zotero",
+        "theoretical-mapping",
+        "sociology",
+        "research"
+      ],
+      "strict": true
+    },
+    {
+      "name": "lit-writeup",
+      "source": "./plugins/lit-writeup",
+      "description": "Draft publication-ready Theory sections for sociology research. Guides structure, paragraph functions, sentence craft, and calibration based on analysis of 80 Social Problems/Social Forces articles.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Neal Caren"
+      },
+      "license": "MIT",
+      "keywords": [
+        "theory-section",
+        "writing",
+        "sociology",
+        "literature-review",
         "research"
       ],
       "strict": true

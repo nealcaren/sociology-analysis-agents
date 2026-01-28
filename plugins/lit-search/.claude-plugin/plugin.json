@@ -1,5 +1,5 @@
 {
-  "name": "lit-review",
+  "name": "lit-search",
   "description": "Build systematic literature databases using OpenAlex API. Phased workflow for search, screening, snowballing, annotation, and synthesis with structured user interaction.",
   "version": "1.0.0",
   "author": {
@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "keywords": [
-    "literature-review",
+    "literature-search",
     "OpenAlex",
     "bibliography",
     "systematic-review",

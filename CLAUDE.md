@@ -23,7 +23,9 @@ Users can install this plugin marketplace and individual plugins with:
 /plugin install abductive-analyst@social-data-analysis
 /plugin install text-analyst@social-data-analysis
 /plugin install lecture-designer@social-data-analysis
-/plugin install lit-review@social-data-analysis
+/plugin install lit-search@social-data-analysis
+/plugin install lit-synthesis@social-data-analysis
+/plugin install lit-writeup@social-data-analysis
 ```
 
 ## Available Skills
@@ -40,7 +42,9 @@ After installation, invoke skills with:
 | **Abductive Analyst** | Abductive analysis (Timmermans & Tavory) | `/abductive-analyst` |
 | **Text Analyst** | Computational text analysis (R/Python) | `/text-analyst` |
 | **Lecture Designer** | Transform chapters into engaging lectures | `/lecture-designer` |
-| **Lit Review** | Build literature databases via OpenAlex | `/lit-review` |
+| **Lit Search** | Build literature databases via OpenAlex | `/lit-search` |
+| **Lit Synthesis** | Deep reading, theoretical mapping, debate identification | `/lit-synthesis` |
+| **Lit Write-Up** | Draft publication-ready Theory sections | `/lit-writeup` |
 
 ## Unified Phased Architecture
 
@@ -103,7 +107,19 @@ All skills follow the same phased structure with pauses between phases:
 
 > **Note**: Lecture Designer requires the [Google Docs MCP](https://github.com/nealcaren/google-docs-mcp) to create slides directly in Google Slides.
 
-### Literature Review (OpenAlex)
+### The Lit Trilogy
+
+Three skills form a complete literature review workflow:
+
+| Skill | Role | Key Output |
+|-------|------|------------|
+| **lit-search** | Find papers via OpenAlex | `database.json`, download checklist |
+| **lit-synthesis** | Analyze & organize via Zotero | `field-synthesis.md`, `theoretical-map.md` |
+| **lit-writeup** | Draft prose | Publication-ready Theory section |
+
+> **Note**: lit-synthesis requires the [Zotero MCP](https://github.com/54yyyu/zotero-mcp) for full-text access.
+
+### Literature Search (OpenAlex)
 
 | Phase | Goal | Pause Point |
 |-------|------|-------------|
@@ -115,11 +131,33 @@ All skills follow the same phased structure with pauses between phases:
 | **5: Annotation** | Extract structured information | User reviews extractions |
 | **6: Synthesis** | Generate database, identify gaps | Database complete |
 
+### Literature Synthesis (Zotero)
+
+| Phase | Goal | Pause Point |
+|-------|------|-------------|
+| **0: Corpus Audit** | Assess coverage, set reading priorities | User confirms priorities |
+| **1: Deep Reading** | Close read priority papers | User reviews reading notes |
+| **2: Theoretical Mapping** | Identify traditions and lineages | User reviews theoretical landscape |
+| **3: Thematic Clustering** | Organize papers by focus and method | User reviews clustering |
+| **4: Debate Mapping** | Identify tensions and competing positions | User selects focus areas |
+| **5: Field Synthesis** | Integrate understanding, recommend approach | Handoff to lit-writeup |
+
+### Literature Write-Up
+
+| Phase | Goal | Pause Point |
+|-------|------|-------------|
+| **0: Assessment** | Identify contribution type, select cluster | User confirms cluster |
+| **1: Architecture** | Design structure, subsections, arc | User approves architecture |
+| **2: Planning** | Map paragraph functions and sequence | User reviews paragraph map |
+| **3: Drafting** | Write paragraphs with sentence-level craft | User reviews each subsection |
+| **4: Turn** | Craft the gap/contribution pivot | User evaluates turn |
+| **5: Revision** | Calibrate against norms, polish | User approves final |
+
 ## Repository Structure
 
 ```
 .claude-plugin/
-└── marketplace.json          # Plugin marketplace definition (9 plugins)
+└── marketplace.json          # Plugin marketplace definition (12 plugins)
 
 plugins/
 ├── r-analyst/
@@ -170,11 +208,24 @@ plugins/
 │       ├── mcp/              # Google Docs MCP setup guides
 │       └── quarto/           # Quarto reveal.js (alternative)
 │
-└── lit-review/
-    └── skills/lit-review/
-        ├── SKILL.md          # Main literature review skill
-        ├── phases/           # Phase agent files (7 phases)
-        └── api/              # OpenAlex API reference
+├── lit-search/
+│   └── skills/lit-search/
+│       ├── SKILL.md          # Main literature search skill
+│       ├── phases/           # Phase agent files (7 phases)
+│       └── api/              # OpenAlex API reference
+│
+├── lit-synthesis/
+│   └── skills/lit-synthesis/
+│       ├── SKILL.md          # Main literature synthesis skill
+│       ├── phases/           # Phase agent files (6 phases)
+│       └── mcp/              # Zotero MCP setup guide
+│
+└── lit-writeup/
+    └── skills/lit-writeup/
+        ├── SKILL.md          # Main literature write-up skill
+        ├── phases/           # Phase agent files (6 phases)
+        ├── clusters/         # Cluster profile guides (5 styles)
+        └── techniques/       # Writing technique guides
 ```
 
 ## Key Commands

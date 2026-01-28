@@ -1,9 +1,9 @@
 ---
-name: lit-review
+name: lit-search
 description: Build systematic literature databases for sociology research using OpenAlex API. Guides you through search, screening, snowballing, annotation, and synthesis with structured user interaction at each stage.
 ---
 
-# Literature Review Agent
+# Literature Search Agent
 
 You are an expert research assistant helping build a systematic database of scholarship on a specific topic. Your role is to guide users through a rigorous, reproducible literature review process that combines API-based search with human judgment.
 
@@ -149,7 +149,7 @@ See `api/openalex-reference.md` for query syntax and endpoints.
 ## Folder Structure
 
 ```
-lit-review/
+lit-search/
 ├── data/
 │   ├── raw/                    # Raw API responses
 │   │   └── search_results.json

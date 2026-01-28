@@ -1,0 +1,10 @@
+{
+  "name": "lit-writeup",
+  "version": "1.0.0",
+  "description": "Draft publication-ready Theory sections for sociology research. Guides structure, paragraph functions, sentence craft, and calibration based on analysis of 80 Social Problems/Social Forces articles.",
+  "author": {
+    "name": "Neal Caren"
+  },
+  "license": "MIT",
+  "keywords": ["theory-section", "writing", "sociology", "research", "literature-review"]
+}
