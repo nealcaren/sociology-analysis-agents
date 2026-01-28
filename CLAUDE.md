@@ -12,17 +12,18 @@ Users can install this plugin marketplace and individual plugins with:
 
 ```bash
 # Add the marketplace
-/plugin marketplace add nealcaren/sociology-analysis-agents
+/plugin marketplace add nealcaren/social-data-analysis
 
 # Install only the plugins you need
-/plugin install r-analyst@sociology-analysis-agents
-/plugin install stata-analyst@sociology-analysis-agents
-/plugin install interview-analyst@sociology-analysis-agents
-/plugin install interview-writeup@sociology-analysis-agents
-/plugin install abductive-analyst@sociology-analysis-agents
-/plugin install text-analyst@sociology-analysis-agents
-/plugin install lecture-designer@sociology-analysis-agents
-/plugin install lit-review@sociology-analysis-agents
+/plugin install r-analyst@social-data-analysis
+/plugin install stata-analyst@social-data-analysis
+/plugin install interview-analyst@social-data-analysis
+/plugin install interview-writeup@social-data-analysis
+/plugin install dag-development@social-data-analysis
+/plugin install abductive-analyst@social-data-analysis
+/plugin install text-analyst@social-data-analysis
+/plugin install lecture-designer@social-data-analysis
+/plugin install lit-review@social-data-analysis
 ```
 
 ## Available Skills
@@ -35,6 +36,7 @@ After installation, invoke skills with:
 | **Stata Analyst** | Statistical analysis in Stata for publication | `/stata-analyst` |
 | **Interview Analyst** | Qualitative analysis of interview data | `/interview-analyst` |
 | **Interview Write-Up** | Write-up support for interview methods and findings | `/interview-writeup` |
+| **DAG Development** | Develop causal diagrams and render publication-ready figures | `/dag-development` |
 | **Abductive Analyst** | Abductive analysis (Timmermans & Tavory) | `/abductive-analyst` |
 | **Text Analyst** | Computational text analysis (R/Python) | `/text-analyst` |
 | **Lecture Designer** | Transform chapters into engaging lectures | `/lecture-designer` |
@@ -117,7 +119,7 @@ All skills follow the same phased structure with pauses between phases:
 
 ```
 .claude-plugin/
-└── marketplace.json          # Plugin marketplace definition (8 plugins)
+└── marketplace.json          # Plugin marketplace definition (9 plugins)
 
 plugins/
 ├── r-analyst/
@@ -140,6 +142,11 @@ plugins/
 ├── interview-writeup/
 │   └── skills/interview-writeup/
 │       ├── SKILL.md          # Main interview write-up skill
+│       └── phases/           # Phase agent files
+│
+├── dag-development/
+│   └── skills/dag-development/
+│       ├── SKILL.md          # Main DAG development skill
 │       └── phases/           # Phase agent files
 │
 ├── abductive-analyst/

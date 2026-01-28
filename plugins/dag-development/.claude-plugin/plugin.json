@@ -1,0 +1,17 @@
+{
+  "name": "dag-development",
+  "description": "Develop causal diagrams (DAGs) from social-science research questions and literature, then render publication-ready figures using Mermaid, R, or Python.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Neal Caren"
+  },
+  "license": "MIT",
+  "keywords": [
+    "causal-diagrams",
+    "DAG",
+    "development",
+    "methods",
+    "sociology"
+  ],
+  "skills": "./skills/"
+}
