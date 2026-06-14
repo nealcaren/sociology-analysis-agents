@@ -30,6 +30,8 @@ You cannot interpret text analysis results without knowing your corpus. This pha
 - Duplicate documents
 ```
 
+**For X/Twitter exports:** Treat the export as already-collected source data. Verify that each record has text, source URL, timestamp, public author identifier, query or filter notes, and export date. Keep the raw export unchanged in `data/raw/`, write cleaned analysis files to `data/processed/`, and document any deleted, deduplicated, or redacted records.
+
 **Create basic statistics table:**
 
 | Metric | Value |

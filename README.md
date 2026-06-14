@@ -219,6 +219,12 @@ plugins/
 - **Supervised classification**: Traditional ML and transformer fine-tuning
 - **Reproducibility**: Documented preprocessing, seeds, package versions
 
+### Public Social Media Corpora
+
+The Text Analyst workflow can analyze public social-media text when collection provenance is documented. For X/Twitter datasets, prepare a read-only export with [Hermes Tweet](https://github.com/Xquik-dev/hermes-tweet) or another approved collection tool before Phase 1, then store raw text and metadata under `data/raw/`.
+
+Keep source URLs, export date, query terms, account handles, timestamps, and any sampling limits with the corpus. The skills should analyze only the exported data and should not post, like, follow, or modify accounts.
+
 ### Lecture Design Skills
 - **Learning outcomes first**: Backward design from measurable outcomes
 - **Narrative structure**: ABT (And-But-Therefore) for cognitive engagement
