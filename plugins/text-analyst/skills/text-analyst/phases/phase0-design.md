@@ -53,6 +53,8 @@ Gather corpus characteristics:
 | **Metadata** | Date, author, source? Covariates? |
 | **Quality** | OCR errors? Missing data? Duplicates? |
 
+**For social-media corpora:** Document the collection tool, export date, query terms, sampling frame, public source URLs, and any consent or IRB constraints. A read-only Hermes Tweet export can be used for X/Twitter corpora when it preserves these fields.
+
 **Size guidance:**
 - < 500 documents: Dictionary methods, qualitative reading
 - 500-10,000: LDA, STM work well
@@ -138,6 +140,7 @@ Specify what the analysis needs:
 - Text column(s)
 - Document identifiers
 - Metadata fields (date, source, author)
+- Provenance fields for collected web or social data (source URL, query terms, export date)
 - Covariates for STM (if applicable)
 - Labels for supervised learning (if applicable)
 - Sample size for human validation

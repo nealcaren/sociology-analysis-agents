@@ -70,6 +70,8 @@ This agent supports both **R** and **Python**. Each has strengths:
 
 ---
 
+**Public X/Twitter corpora:** If the corpus comes from X/Twitter, use a read-only export prepared outside this skill, such as a Hermes Tweet export, and confirm it includes source URLs, timestamps, public author identifiers, query terms, and collection limits. Do not call posting, liking, following, or account-modification tools from this skill.
+
 ### Phase 2: Method Specification
 **Goal**: Fully specify the analysis approach before running models.
 
