@@ -7,6 +7,30 @@ description: Build systematic literature databases for sociology research using 
 
 You are an expert research assistant helping build a systematic database of scholarship on a specific topic. Your role is to guide users through a rigorous, reproducible literature review process that combines API-based search with human judgment.
 
+## Project Integration
+
+This skill reads from `project.yaml` when available:
+
+```yaml
+# From project.yaml
+paths:
+  literature_db: literature/database/
+  reading_notes: literature/notes/
+  lit_synthesis: literature/synthesis/
+```
+
+If `project.yaml` exists, save outputs to canonical paths. If not, use the default `lit-search/` folder structure.
+
+**Project type:** This skill works for **all project types** (qualitative, quantitative, mixed). Literature review is universal.
+
+Updates `progress.yaml` when phases complete:
+```yaml
+status:
+  lit_search: done
+artifacts:
+  literature_database: literature/database/database.json
+```
+
 ## Core Principles
 
 1. **User expertise drives scope**: The user knows their field. You provide systematic methods; they provide domain knowledge.
@@ -18,6 +42,14 @@ You are an expert research assistant helping build a systematic database of scho
 4. **Full text when possible**: Abstracts are insufficient for deep annotation. Help users acquire full text.
 
 5. **Structured output**: The final database should be queryable and citation-manager compatible.
+
+## File Management
+
+This skill uses git to track progress across phases. Before modifying any output file at a new phase:
+1. Stage and commit current state: `git add [files] && git commit -m "lit-search: Phase N complete"`
+2. Then proceed with modifications.
+
+Do NOT create version-suffixed copies (e.g., `-v2`, `-final`, `-working`). The git history serves as the version trail.
 
 ## API Backend
 
@@ -115,7 +147,8 @@ See `api/openalex-reference.md` for query syntax and endpoints.
 **Goal**: Extract structured information from each paper.
 
 **Process**:
-- For each paper (full text preferred, abstract if necessary):
+- For priority papers, use **reading-agent** skill for deep structured reading
+- For remaining papers (full text preferred, abstract if necessary):
   - Research question/hypothesis
   - Theoretical framework
   - Methods (data, sample, analysis)
@@ -125,7 +158,7 @@ See `api/openalex-reference.md` for query syntax and endpoints.
 - User reviews and corrects extractions
 - Flag papers needing closer reading
 
-**Output**: Annotated database entries.
+**Output**: Annotated database entries (merged with reading-agent notes).
 
 > **Pause**: User reviews annotations for accuracy.
 
@@ -151,22 +184,14 @@ See `api/openalex-reference.md` for query syntax and endpoints.
 ```
 lit-search/
 ├── data/
-│   ├── raw/                    # Raw API responses
-│   │   └── search_results.json
-│   ├── screened/              # After screening
-│   │   └── included.json
-│   └── annotated/             # Final annotated corpus
-│       └── database.json
+│   └── database.json          # Evolves across phases; git tracks states
 ├── fulltext/                  # PDF storage (user-managed)
 ├── output/
 │   ├── bibliography.md        # Annotated bibliography
-│   ├── database.json          # Queryable database
-│   ├── references.bib         # BibTeX export
+│   ├── references.bib         # BibTeX export — canonical, used by all downstream skills
 │   └── synthesis.md           # Thematic summary
 └── memos/
-    ├── scope.md               # Phase 0 output
-    ├── screening_log.md       # Phase 2 decisions
-    └── gaps.md                # Research gaps
+    └── search-memo.md         # Single memo appended at each phase
 ```
 
 ## Screening Logic

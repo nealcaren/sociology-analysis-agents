@@ -192,7 +192,7 @@ Distinctive language this participant uses—metaphors, recurring phrases, terms
 - [Code 2]: [brief note]
 ```
 
-**Why this matters for writeup**: The interview-writeup skill needs:
+**Why this matters for writeup**: The qual-findings-writer skill needs:
 - Full demographics for attribution ("Maria, a 34-year-old Puerto Rican lesbian who co-founded the Latino Caucus...")
 - Extended quotes for anchor vignettes (3-6 sentences showing voice and reasoning)
 - Short quotes for echo patterns (1-2 sentences showing prevalence)

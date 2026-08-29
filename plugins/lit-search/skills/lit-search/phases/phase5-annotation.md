@@ -8,9 +8,32 @@ A literature database is only as useful as its annotations. This phase transform
 
 ## Prerequisites
 
-- Load `data/screened/included_with_snowball.json`
-- Check `data/fulltext_status.json` for available full texts
+- Load `data/database.json` (filter to papers where `screening_status == "include"`)
+- Check each paper's `fulltext_obtained` and `fulltext_path` fields for available full texts
 - Full text PDFs should be in `fulltext/` directory
+
+## Integration with reading-agent
+
+For deep reading and structured note extraction, use the **reading-agent** skill:
+
+```
+/reading-agent
+
+Paper: [title]
+PDF: fulltext/[filename].pdf
+DOI: [doi]
+```
+
+The reading-agent skill produces structured reading notes with:
+- Core arguments and theoretical frameworks
+- Methods and empirical strategy
+- Key findings and contribution claims
+- Key quotes with page numbers
+
+**Workflow**:
+1. Use reading-agent for priority papers requiring deep reading
+2. Use batch annotation (below) for remaining papers
+3. Merge reading-agent notes into the annotation database
 
 ## Your Tasks
 
@@ -211,22 +234,29 @@ def batch_annotate(papers, batch_size=10):
 
 ### 7. Save Annotated Database
 
+Add annotation fields directly to each paper record in `data/database.json` (do not create a separate file):
+
 ```python
-def save_annotations(annotations, output_path="data/annotated/database.json"):
-    """Save complete annotated database."""
-    database = {
-        "metadata": {
-            "created": "2024-01-15",
-            "total_papers": len(annotations),
-            "fulltext_annotated": sum(1 for a in annotations if a["annotation_source"] == "full_text"),
-            "abstract_only": sum(1 for a in annotations if a["annotation_source"] == "abstract_only")
-        },
-        "papers": annotations
+def save_annotations(database, annotated_papers):
+    """Merge annotations into the existing database."""
+    annotation_map = {a["openalex_id"]: a for a in annotated_papers}
+
+    for paper in database["papers"]:
+        if paper["openalex_id"] in annotation_map:
+            paper.update(annotation_map[paper["openalex_id"]])
+
+    database["annotation_metadata"] = {
+        "created": "2024-01-15",
+        "total_annotated": len(annotated_papers),
+        "fulltext_annotated": sum(1 for a in annotated_papers if a["annotation_source"] == "full_text"),
+        "abstract_only": sum(1 for a in annotated_papers if a["annotation_source"] == "abstract_only")
     }
 
-    with open(output_path, "w") as f:
+    with open("data/database.json", "w") as f:
         json.dump(database, f, indent=2)
 ```
+
+Then append a `## Phase 5: Annotation` section to `memos/search-memo.md` with annotation notes, observations, and any patterns noticed during reading.
 
 ## Annotation Quality Guidelines
 
@@ -252,8 +282,8 @@ def save_annotations(annotations, output_path="data/annotated/database.json"):
 
 ## Output Files
 
-- `data/annotated/database.json` - Complete structured database
-- `memos/annotation_notes.md` - User's notes and observations during annotation
+- `data/database.json` - Updated with annotation fields merged into each paper record
+- `memos/search-memo.md` - Phase 5 section with annotation notes appended
 
 ## Guiding Principles
 
@@ -265,6 +295,6 @@ def save_annotations(annotations, output_path="data/annotated/database.json"):
 ## When You're Done
 
 Tell the orchestrator:
-> "Phase 5 complete. Annotated X papers (Y from full text, Z from abstract). Database saved to data/annotated/database.json. Ready for synthesis."
+> "Phase 5 complete. Annotated X papers (Y from full text, Z from abstract). Annotations merged into data/database.json. Phase 5 notes appended to memos/search-memo.md. Ready for synthesis."
 
 **Do not proceed to Phase 6 until the user has reviewed annotations for at least the core papers.**

@@ -8,7 +8,7 @@ Abstract-only annotation is limited. Full text reveals methods details, nuanced 
 
 ## Prerequisites
 
-- Load `data/screened/included_with_snowball.json` (or `included.json` if no snowballing)
+- Load `data/database.json` (filter to papers where `screening_status == "include"`)
 
 ## Your Tasks
 
@@ -214,30 +214,26 @@ def download_oa_papers(oa_papers, output_dir="fulltext"):
 
 ### 7. Track Full Text Status
 
-Create a tracking file:
+Add fulltext status fields directly to each paper record in `data/database.json`:
 
 ```python
-fulltext_status = []
-for paper in papers:
-    fulltext_status.append({
-        "openalex_id": paper["openalex_id"],
-        "title": paper["title"],
-        "doi": paper.get("doi"),
-        "oa_available": bool(paper.get("open_access", {}).get("oa_url")),
-        "fulltext_obtained": False,  # User updates this
-        "fulltext_path": None,       # User updates this
-        "notes": ""
-    })
+for paper in database["papers"]:
+    if paper.get("screening_status") == "include":
+        paper["oa_available"] = bool(paper.get("open_access", {}).get("oa_url"))
+        paper["fulltext_obtained"] = False   # User updates this
+        paper["fulltext_path"] = None        # User updates this
+        paper["fulltext_notes"] = ""
 
-# Save for user tracking
-with open("data/fulltext_status.json", "w") as f:
-    json.dump(fulltext_status, f, indent=2)
+with open("data/database.json", "w") as f:
+    json.dump(database, f, indent=2)
 ```
+
+Then append a `## Phase 4: Full Text Acquisition` section to `memos/search-memo.md` containing the full text checklist (direct OA downloads and papers requiring institutional access), so users have a single memo file tracking all phases.
 
 ## Output Files
 
-- `output/fulltext_checklist.md` - Human-readable download list
-- `data/fulltext_status.json` - Machine-readable tracking
+- `memos/search-memo.md` - Phase 4 section with full text checklist appended
+- `data/database.json` - Updated with `oa_available`, `fulltext_obtained`, `fulltext_path` fields per paper
 - `fulltext/` - Directory for user to store PDFs
 
 ## Guiding Principles
@@ -250,7 +246,7 @@ with open("data/fulltext_status.json", "w") as f:
 ## When You're Done
 
 Tell the orchestrator:
-> "Phase 4 complete. X/Y papers (Z%) have OA versions available. Download checklist created at output/fulltext_checklist.md. User should obtain remaining papers before annotation phase."
+> "Phase 4 complete. X/Y papers (Z%) have OA versions available. Fulltext status fields added to data/database.json. Full text checklist appended to memos/search-memo.md. User should obtain remaining papers before annotation phase."
 
 **Do not proceed to Phase 5 until the user has obtained full text for key papers.**
 

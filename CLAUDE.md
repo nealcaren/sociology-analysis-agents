@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Purpose
 
-This repository provides a Claude Code plugin marketplace with skills (agents) for rigorous social science research analysis. Each skill guides users through a structured, phased workflow with pauses for user input at each stage.
+This repository provides a Claude Code plugin marketplace with **analysis** skills (agents) for rigorous social science research. Each skill guides users through a structured, phased workflow with pauses for user input at each stage.
+
+**Scope**: Only *analysis* skills are published to the marketplace. Writing and manuscript-drafting skills live under `private/` and are NOT published here — they are maintained in the separate [`sociology-skillset`](https://github.com/nealcaren/sociology-skillset) marketplace. See "Public vs. Private" below.
 
 ## Installation
 
@@ -18,22 +20,13 @@ Users can install this plugin marketplace and individual plugins with:
 /plugin install r-analyst@social-data-analysis
 /plugin install stata-analyst@social-data-analysis
 /plugin install interview-analyst@social-data-analysis
-/plugin install interview-writeup@social-data-analysis
-/plugin install dag-development@social-data-analysis
 /plugin install abductive-analyst@social-data-analysis
 /plugin install text-analyst@social-data-analysis
-/plugin install lecture-designer@social-data-analysis
+/plugin install dag-development@social-data-analysis
 /plugin install lit-search@social-data-analysis
-/plugin install lit-synthesis@social-data-analysis
-/plugin install lit-writeup@social-data-analysis
-/plugin install interview-bookends@social-data-analysis
-/plugin install genre-skill-builder@social-data-analysis
-/plugin install methods-writer@social-data-analysis
-/plugin install case-justification@social-data-analysis
-/plugin install revision-coordinator@social-data-analysis
 ```
 
-## Available Skills
+## Available Skills (Public)
 
 After installation, invoke skills with:
 
@@ -42,19 +35,16 @@ After installation, invoke skills with:
 | **R Analyst** | Statistical analysis in R for publication | `/r-analyst` |
 | **Stata Analyst** | Statistical analysis in Stata for publication | `/stata-analyst` |
 | **Interview Analyst** | Qualitative analysis of interview data | `/interview-analyst` |
-| **Interview Write-Up** | Write-up support for interview methods and findings | `/interview-writeup` |
-| **DAG Development** | Develop causal diagrams and render publication-ready figures | `/dag-development` |
 | **Abductive Analyst** | Abductive analysis (Timmermans & Tavory) | `/abductive-analyst` |
 | **Text Analyst** | Computational text analysis (R/Python) | `/text-analyst` |
-| **Lecture Designer** | Transform chapters into engaging lectures | `/lecture-designer` |
+| **DAG Development** | Develop causal diagrams and render publication-ready figures | `/dag-development` |
 | **Lit Search** | Build literature databases via OpenAlex | `/lit-search` |
-| **Lit Synthesis** | Deep reading, theoretical mapping, debate identification | `/lit-synthesis` |
-| **Lit Write-Up** | Draft publication-ready Theory sections | `/lit-writeup` |
-| **Interview Bookends** | Draft introductions and conclusions from theory/findings | `/interview-bookends` |
-| **Genre Skill Builder** | Create genre-analysis-based writing skills from a corpus | `/genre-skill-builder` |
-| **Methods Writer** | Draft Methods sections for interview articles (3 pathways) | `/methods-writer` |
-| **Case Justification** | Draft case justification sections (5 clusters) | `/case-justification` |
-| **Revision Coordinator** | Orchestrate manuscript revision by routing feedback to skills | `/revision-coordinator` |
+
+## Public vs. Private
+
+**Public** (published to the `social-data-analysis` marketplace, under `plugins/`): the seven analysis skills above.
+
+**Private** (retained under `private/`, NOT in `marketplace.json`): writing/drafting and support skills — `interview-writeup`, `lit-writeup`, `interview-bookends`, `methods-writer`, `case-justification`, `revision-coordinator`, `genre-skill-builder`, `bibliography-builder`, `peer-reviewer`, `lit-synthesis`, `lecture-designer`. These are superseded by the [`sociology-skillset`](https://github.com/nealcaren/sociology-skillset) marketplace and kept here only for reference. The phase tables below document skills in both groups.
 
 ## Unified Phased Architecture
 
@@ -227,107 +217,29 @@ Orchestrates manuscript revision by routing feedback to specialized skills:
 
 ```
 .claude-plugin/
-└── marketplace.json          # Plugin marketplace definition (17 plugins)
+└── marketplace.json          # Plugin marketplace definition (7 public plugins)
 
-plugins/
-├── r-analyst/
-│   └── skills/r-analyst/
-│       ├── SKILL.md          # Main R analyst skill
-│       ├── phases/           # Phase agent files
-│       └── techniques/       # R method reference guides
-│
-├── stata-analyst/
-│   └── skills/stata-analyst/
-│       ├── SKILL.md          # Main Stata analyst skill
-│       ├── phases/           # Phase agent files
-│       └── techniques/       # Stata method reference guides
-│
-├── interview-analyst/
-│   └── skills/interview-analyst/
-│       ├── SKILL.md          # Main interview analyst skill
-│       └── phases/           # Phase agent files
-│
+plugins/                      # PUBLIC — published to the marketplace
+├── r-analyst/                #   skills/r-analyst/ (SKILL.md, phases/, techniques/)
+├── stata-analyst/            #   skills/stata-analyst/ (SKILL.md, phases/, techniques/)
+├── interview-analyst/        #   skills/interview-analyst/ (SKILL.md, phases/ — incl. phase6-methods)
+├── abductive-analyst/        #   skills/abductive-analyst/ (SKILL.md, phases/ — 7 phases)
+├── text-analyst/             #   skills/text-analyst/ (SKILL.md, phases/, concepts/, r-techniques/, python-techniques/)
+├── dag-development/          #   skills/dag-development/ (SKILL.md, phases/)
+└── lit-search/               #   skills/lit-search/ (SKILL.md, phases/, api/)
+
+private/                      # NOT published — writing/drafting + support skills, kept for reference
 ├── interview-writeup/
-│   └── skills/interview-writeup/
-│       ├── SKILL.md          # Main interview write-up skill
-│       └── phases/           # Phase agent files
-│
-├── dag-development/
-│   └── skills/dag-development/
-│       ├── SKILL.md          # Main DAG development skill
-│       └── phases/           # Phase agent files
-│
-├── abductive-analyst/
-│   └── skills/abductive-analyst/
-│       ├── SKILL.md          # Main abductive analyst skill
-│       └── phases/           # Phase agent files (7 phases)
-│
-├── text-analyst/
-│   └── skills/text-analyst/
-│       ├── SKILL.md          # Main text analyst skill
-│       ├── phases/           # Phase agent files
-│       ├── concepts/         # Method concepts (language-agnostic)
-│       ├── r-techniques/     # R implementation guides
-│       └── python-techniques/ # Python implementation guides
-│
-├── lecture-designer/
-│   └── skills/lecture-designer/
-│       ├── SKILL.md          # Main lecture designer skill
-│       ├── phases/           # Phase agent files
-│       ├── pedagogy/         # Teaching methodology guides
-│       ├── mcp/              # Google Docs MCP setup guides
-│       └── quarto/           # Quarto reveal.js (alternative)
-│
-├── lit-search/
-│   └── skills/lit-search/
-│       ├── SKILL.md          # Main literature search skill
-│       ├── phases/           # Phase agent files (7 phases)
-│       └── api/              # OpenAlex API reference
-│
-├── lit-synthesis/
-│   └── skills/lit-synthesis/
-│       ├── SKILL.md          # Main literature synthesis skill
-│       ├── phases/           # Phase agent files (6 phases)
-│       └── mcp/              # Zotero MCP setup guide
-│
 ├── lit-writeup/
-│   └── skills/lit-writeup/
-│       ├── SKILL.md          # Main literature write-up skill
-│       ├── phases/           # Phase agent files (6 phases)
-│       ├── clusters/         # Cluster profile guides (5 styles)
-│       └── techniques/       # Writing technique guides
-│
 ├── interview-bookends/
-│   └── skills/interview-bookends/
-│       ├── SKILL.md          # Main interview-bookends skill
-│       ├── phases/           # Phase agent files (4 phases)
-│       ├── clusters/         # Cluster profile guides (5 styles)
-│       └── techniques/       # Writing technique guides
-│
-├── genre-skill-builder/
-│   └── skills/genre-skill-builder/
-│       ├── SKILL.md          # Main genre-skill-builder skill
-│       ├── phases/           # Phase agent files (6 phases)
-│       └── templates/        # Skill generation templates
-│
 ├── methods-writer/
-│   └── skills/methods-writer/
-│       ├── SKILL.md          # Main methods-writer skill
-│       ├── phases/           # Phase agent files (3 phases)
-│       ├── pathways/         # Pathway profiles (Efficient/Standard/Detailed)
-│       └── techniques/       # Writing technique guides
-│
 ├── case-justification/
-│   └── skills/case-justification/
-│       ├── SKILL.md          # Main case-justification skill
-│       ├── phases/           # Phase agent files (3 phases)
-│       ├── clusters/         # Cluster profiles (5 styles)
-│       └── techniques/       # Writing technique guides
-│
-└── revision-coordinator/
-    └── skills/revision-coordinator/
-        ├── SKILL.md          # Main revision-coordinator skill
-        └── phases/           # Phase agent files (5 phases)
+├── revision-coordinator/
+├── genre-skill-builder/
+├── bibliography-builder/
+├── peer-reviewer/
+├── lit-synthesis/
+└── lecture-designer/
 ```
 
 ## Key Commands

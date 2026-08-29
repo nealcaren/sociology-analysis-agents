@@ -335,16 +335,16 @@ modelsummary(robustness_models,
 
 ## Output: Robustness Report
 
-Create a robustness report (`memos/phase4-robustness-report.md`):
+Append a Phase 4 section to `memos/analysis-memo.md`:
 
 ```markdown
-# Robustness Report
+## Phase 4: Robustness & Sensitivity
 
-## Summary Assessment
+### Summary Assessment
 
 The main findings are [robust / partially robust / not robust] to alternative specifications.
 
-## Alternative Specifications
+### Alternative Specifications
 
 | Specification | Estimate | SE | Conclusion |
 |---------------|----------|-----|------------|
@@ -354,7 +354,7 @@ The main findings are [robust / partially robust / not robust] to alternative sp
 | Alt FE | X.XX | (X.XX) | [stable/different] |
 ...
 
-## Placebo Tests
+### Placebo Tests
 
 | Test | Expected | Found | Pass? |
 |------|----------|-------|-------|
@@ -362,30 +362,30 @@ The main findings are [robust / partially robust / not robust] to alternative sp
 | Fake timing | 0 | X.XX (p=X.XX) | [Yes/No] |
 | Unrelated outcome | 0 | X.XX (p=X.XX) | [Yes/No] |
 
-## Sensitivity Analysis
+### Sensitivity Analysis
 
-### Outliers
+#### Outliers
 - Results [are / are not] sensitive to extreme values
 
-### Sample restrictions
+#### Sample restrictions
 - Results [hold / change] in different subsamples
 
-### Selection on unobservables (sensemakr)
+#### Selection on unobservables (sensemakr)
 - An unobserved confounder would need to be [X times] as strong as
   [strongest observed covariate] to explain away the result
 - This is [plausible / implausible] because [reasoning]
 
-## Subgroup Analysis
+### Subgroup Analysis
 
 | Subgroup | Estimate | SE | Different from main? |
 |----------|----------|-----|---------------------|
 | Group 1 | X.XX | (X.XX) | [Yes/No] |
 | Group 2 | X.XX | (X.XX) | [Yes/No] |
 
-## Method-Specific Diagnostics
+### Method-Specific Diagnostics
 [Results of diagnostic tests]
 
-## Overall Assessment
+### Overall Assessment
 
 **Strengths:**
 - [What checks the results passed]
@@ -396,7 +396,7 @@ The main findings are [robust / partially robust / not robust] to alternative sp
 **Conclusion:**
 The main findings [can / cannot] be considered robust because [reasoning].
 
-## Questions for User
+### Questions for User
 - [Any interpretive questions about robustness]
 ```
 
@@ -408,5 +408,6 @@ Return a summary to the orchestrator that includes:
 3. Sensitivity analysis conclusions
 4. Any concerns about the findings
 5. Questions for the user
+6. Confirmation that the Phase 4 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 5 until the user reviews the robustness assessment.**

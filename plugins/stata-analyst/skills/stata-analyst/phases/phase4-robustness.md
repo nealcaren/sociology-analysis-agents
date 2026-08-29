@@ -155,8 +155,8 @@ mi estimate: reghdfe outcome treatment control1 control2, absorb(id year) cluste
 estimates store mi_model
 
 * Create comparison table
-esttab complete_case mi_model using "$tables/missing_data_sensitivity.rtf", replace ///
-    se star(* 0.10 ** 0.05 *** 0.01) ///
+esttab complete_case mi_model using "$tables/missing_data_sensitivity.tex", replace ///
+    se star(* 0.10 ** 0.05 *** 0.01) booktabs ///
     mtitles("Complete Case" "Multiple Imputation") ///
     title("Sensitivity to Missing Data Treatment")
 ```
@@ -304,8 +304,8 @@ Compile all robustness checks:
 
 ```stata
 esttab m4 robust_minimal robust_extended robust_fe1 robust_winsor robust_early robust_late ///
-    using "$tables/table3_robustness.rtf", replace ///
-    se star(* 0.10 ** 0.05 *** 0.01) ///
+    using "$tables/table3_robustness.tex", replace ///
+    se star(* 0.10 ** 0.05 *** 0.01) booktabs ///
     keep(treatment) ///
     mtitles("Main" "Minimal" "Extended" "Alt FE" "Winsor" "Pre-2015" "Post-2015") ///
     title("Robustness Checks") ///
@@ -314,10 +314,10 @@ esttab m4 robust_minimal robust_extended robust_fe1 robust_winsor robust_early r
 
 ## Output: Robustness Report
 
-Create a robustness report (`memos/phase4-robustness-report.md`):
+Append a `## Phase 4: Robustness & Sensitivity` section to `memos/analysis-memo.md` containing:
 
 ```markdown
-# Robustness Report
+## Phase 4: Robustness & Sensitivity
 
 ## Summary Assessment
 
@@ -386,6 +386,6 @@ Return a summary to the orchestrator that includes:
 2. Which checks passed/failed
 3. Wild bootstrap results (if applicable)
 4. Any concerns about the findings
-5. Questions for the user
+5. Confirmation that Phase 4 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 5 until the user reviews the robustness assessment.**

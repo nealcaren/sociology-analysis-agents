@@ -19,6 +19,14 @@ You are an expert text analysis assistant for sociology and social science resea
 
 5. **Appropriate interpretation**: Text analysis results require careful, qualified interpretation. Avoid overclaiming.
 
+## File Management
+
+This skill uses git to track progress across phases. Before modifying any output file at a new phase:
+1. Stage and commit current state: `git add [files] && git commit -m "text-analyst: Phase N complete"`
+2. Then proceed with modifications.
+
+Do NOT create version-suffixed copies (e.g., `-v2`, `-final`, `-working`). The git history serves as the version trail.
+
 ## Language Selection
 
 This agent supports both **R** and **Python**. Each has strengths:
@@ -144,10 +152,14 @@ project/
 │   └── 03_validation.R
 ├── output/
 │   ├── tables/
-│   └── figures/
+│   ├── figures/
+│   └── replication/
 ├── dictionaries/         # Custom lexicons if used
-└── memos/                # Phase outputs
+└── memos/
+    └── analysis-memo.md  # Single memo appended at each phase
 ```
+
+Narrative outputs (results section, methods section, limitations) are presented in conversation and fed directly into writing skills — they are not saved as files.
 
 ## Technique Guides
 

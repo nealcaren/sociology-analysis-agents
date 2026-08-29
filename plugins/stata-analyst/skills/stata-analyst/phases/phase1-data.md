@@ -52,7 +52,7 @@ summarize outcome treatment control1 control2, detail
 
 * Formatted table
 estpost summarize outcome treatment control1 control2
-esttab using "$tables/table1_descriptives.rtf", ///
+esttab using "$tables/table1_descriptives.tex", ///
     cells("count mean sd min max") ///
     title("Summary Statistics") ///
     replace
@@ -63,7 +63,7 @@ tabstat outcome control1 control2, by(treatment) stats(n mean sd)
 
 * Balance table
 estpost ttest outcome control1 control2, by(treatment)
-esttab using "$tables/table1_balance.rtf", ///
+esttab using "$tables/table1_balance.tex", ///
     cells("mu_1 mu_2 b se") ///
     title("Balance Across Treatment Groups") ///
     replace
@@ -202,10 +202,10 @@ save "$clean/analysis_sample.dta", replace
 
 ## Output: Data Report
 
-Create a data report (`memos/phase1-data-report.md`) containing:
+Append a `## Phase 1: Data Familiarization` section to `memos/analysis-memo.md` containing:
 
 ```markdown
-# Data Familiarization Report
+## Phase 1: Data Familiarization
 
 ## Data Overview
 - **Source**: [where data comes from]
@@ -250,6 +250,6 @@ Return a summary to the orchestrator that includes:
 2. Any data quality issues found
 3. Whether data supports the planned design
 4. Key observations from descriptives
-5. Questions for the user
+5. Confirmation that Phase 1 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 2 until the user reviews the descriptives and confirms the sample.**

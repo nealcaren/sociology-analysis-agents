@@ -1,6 +1,6 @@
 # Sociology Analysis Agents for Claude Code
 
-A Claude Code plugin marketplace with skills for rigorous quantitative and qualitative analysis in sociology and related social sciences. These skills guide you through systematic, publication-ready research workflows.
+A Claude Code plugin marketplace with skills for rigorous quantitative and qualitative analysis in sociology and related social sciences. These skills guide you through systematic, publication-ready research workflows, each with mandatory pauses between phases for user review.
 
 ## Installation
 
@@ -12,31 +12,29 @@ A Claude Code plugin marketplace with skills for rigorous quantitative and quali
 /plugin install r-analyst@social-data-analysis
 /plugin install stata-analyst@social-data-analysis
 /plugin install interview-analyst@social-data-analysis
-/plugin install interview-writeup@social-data-analysis
-/plugin install dag-development@social-data-analysis
 /plugin install abductive-analyst@social-data-analysis
 /plugin install text-analyst@social-data-analysis
-/plugin install lecture-designer@social-data-analysis
-/plugin install lit-review@social-data-analysis
+/plugin install dag-development@social-data-analysis
+/plugin install lit-search@social-data-analysis
 ```
 
 ## Available Plugins
 
-Each plugin provides a single focused skill. Install only what you need:
+Each plugin provides a single focused **analysis** skill. Install only what you need:
 
 | Skill | Invocation | Description |
 |-------|------------|-------------|
 | **R Statistical Analyst** | `/r-analyst` | Phased quantitative analysis workflow using R (DiD, IV, matching, etc.) |
 | **Stata Statistical Analyst** | `/stata-analyst` | Phased quantitative analysis workflow using Stata |
 | **Interview Analyst** | `/interview-analyst` | Pragmatic qualitative analysis for interview data |
-| **Interview Write-Up** | `/interview-writeup` | Write-up support for interview methods and findings |
-| **DAG Development** | `/dag-development` | Develop causal diagrams and render publication-ready figures (Mermaid, R, Python) |
 | **Abductive Analyst** | `/abductive-analyst` | Abductive analysis (Timmermans & Tavory) for theory-generating qualitative research |
 | **Text Analyst** | `/text-analyst` | Computational text analysis with R and Python (topic models, sentiment, classification) |
-| **Lecture Designer** | `/lecture-designer` | Transform textbook chapters into engaging lectures with Quarto slides |
-| **Lit Review** | `/lit-review` | Build literature databases via OpenAlex |
+| **DAG Development** | `/dag-development` | Develop causal diagrams and render publication-ready figures (Mermaid, R, Python) |
+| **Lit Search** | `/lit-search` | Build systematic literature databases via OpenAlex |
 
 Each skill uses a **phased workflow** with mandatory pauses between phases for user review and decision-making.
+
+> **Scope**: This marketplace publishes *analysis* skills only. Writing and manuscript-drafting skills (theory sections, methods write-ups, introductions/conclusions, revision coordination, etc.) are maintained separately in the [`sociology-skillset`](https://github.com/nealcaren/sociology-skillset) marketplace.
 
 ## Workflow Overview
 
@@ -69,7 +67,9 @@ Phase 3: Interpretation → Identify patterns, develop explanations
     ↓ [User Review]
 Phase 4: Quality Check → Assess against 5 quality indicators
     ↓ [User Review]
-Phase 5: Synthesis → Write publication-ready sections
+Phase 5: Synthesis → Integrate into a coherent argument
+    ↓ [User Review]
+Phase 6: Methods → Draft a methods section from analytic decisions
 ```
 
 ### Abductive Analysis (Timmermans & Tavory)
@@ -106,25 +106,29 @@ Phase 4: Validation → Human validation, diagnostics, robustness
 Phase 5: Output → Publication-ready tables, figures, replication
 ```
 
-### Lecture Design
+### Literature Search (OpenAlex)
 
 ```
-Phase 0: Context & Outcomes → Define measurable learning outcomes
-    ↓ [Instructor Review]
-Phase 1: Content Audit → Narrative arc (ABT), chunk map, hook design
-    ↓ [Instructor Review]
-Phase 2: Active Learning → Polls, ConcepTests, peer instruction
-    ↓ [Instructor Review]
-Phase 3: Slide Development → Quarto reveal.js with speaker notes
-    ↓ [Instructor Review]
-Phase 4: Review → Timing audit, backup plans, instructor guide
+Phase 0: Scope Definition → Topic, search terms, criteria
+    ↓ [User Review]
+Phase 1: Initial Search → Query OpenAlex, build corpus
+    ↓ [User Review]
+Phase 2: Screening → Filter with LLM assistance
+    ↓ [User Review]
+Phase 3: Snowballing → Expand via citation networks
+    ↓ [User Review]
+Phase 4: Full Text → Identify OA sources, download checklist
+    ↓ [User Review]
+Phase 5: Annotation → Extract structured information
+    ↓ [User Review]
+Phase 6: Synthesis → Generate database, identify gaps
 ```
 
 ## Repository Structure
 
 ```
 .claude-plugin/
-└── marketplace.json              # Plugin marketplace definition (9 plugins)
+└── marketplace.json              # Plugin marketplace definition (7 plugins)
 
 plugins/
 ├── r-analyst/
@@ -144,16 +148,6 @@ plugins/
 │       ├── SKILL.md              # Interview orchestrator
 │       └── phases/               # Phase agents
 │
-├── interview-writeup/
-│   └── skills/interview-writeup/
-│       ├── SKILL.md              # Interview write-up orchestrator
-│       └── phases/               # Phase agents
-│
-├── dag-development/
-│   └── skills/dag-development/
-│       ├── SKILL.md              # DAG development orchestrator
-│       └── phases/               # Phase agents
-│
 ├── abductive-analyst/
 │   └── skills/abductive-analyst/
 │       ├── SKILL.md              # Abductive analysis orchestrator
@@ -167,18 +161,18 @@ plugins/
 │       ├── r-techniques/         # R text analysis code guides
 │       └── python-techniques/    # Python text analysis code guides
 │
-└── lecture-designer/
-    └── skills/lecture-designer/
-        ├── SKILL.md              # Lecture design orchestrator
-        ├── phases/               # Phase agents
-        ├── pedagogy/             # Teaching methodology (overview)
-        └── quarto/               # Quarto reveal.js reference
-
-└── lit-review/
-    └── skills/lit-review/
-        ├── SKILL.md              # Literature review orchestrator
+├── dag-development/
+│   └── skills/dag-development/
+│       ├── SKILL.md              # DAG development orchestrator
+│       └── phases/               # Phase agents
+│
+└── lit-search/
+    └── skills/lit-search/
+        ├── SKILL.md              # Literature search orchestrator
         ├── phases/               # Phase agents
         └── api/                  # OpenAlex API reference
+
+private/                          # Writing/drafting skills, not published to the marketplace
 ```
 
 ## Key Features
@@ -197,11 +191,6 @@ plugins/
 - **Systematic coding**: Codebook development with examples
 - **Quality indicators**: Cognitive empathy, heterogeneity, palpability, follow-up, self-awareness
 - **Evidence selection**: Luminous exemplars, not just typical quotes
-- **Methods transparency**: Detailed templates for sampling, recruitment, saturation
-- **Write-up support**: Methods drafting, findings structure, quote use, and revision checklists
-
-### Methods Skills
-- **DAG development**: Build causal diagrams from theory and render figures in Mermaid, R, or Python
 
 ### Abductive Analysis Skills
 - **Theory-first approach**: Build theoretical sensitivity before data engagement
@@ -219,12 +208,13 @@ plugins/
 - **Supervised classification**: Traditional ML and transformer fine-tuning
 - **Reproducibility**: Documented preprocessing, seeds, package versions
 
-### Lecture Design Skills
-- **Learning outcomes first**: Backward design from measurable outcomes
-- **Narrative structure**: ABT (And-But-Therefore) for cognitive engagement
-- **Cognitive load management**: Chunking, attention resets every 12-18 minutes
-- **Active learning integration**: Polls, ConcepTests, Peer Instruction
-- **Quarto reveal.js output**: Publication-quality slides with speaker notes
+### Methods Skills
+- **DAG development**: Build causal diagrams from theory and render figures in Mermaid, R, or Python
+
+### Literature Search Skills
+- **OpenAlex-powered**: Systematic search, screening, and snowballing
+- **Structured annotation**: Extract consistent information across a corpus
+- **Database output**: Reusable literature database with gap identification
 
 ## Requirements
 

@@ -175,44 +175,44 @@ saveRDS(analysis_data, "data/clean/analysis_sample.rds")
 
 ## Output: Data Report
 
-Create a data report (`memos/phase1-data-report.md`) containing:
+Append a Phase 1 section to `memos/analysis-memo.md`:
 
 ```markdown
-# Data Familiarization Report
+## Phase 1: Data Familiarization
 
-## Data Overview
+### Data Overview
 - **Source**: [where data comes from]
 - **Observations**: [N]
 - **Variables**: [count and key variables]
 - **Time Period**: [if applicable]
 
-## Sample Construction
+### Sample Construction
 | Step | N | Notes |
 |------|---|-------|
 | Original sample | X | |
 | After restriction 1 | Y | [reason] |
 | Final analysis sample | Z | |
 
-## Descriptive Statistics
+### Descriptive Statistics
 [Insert or reference Table 1]
 
-## Data Quality Issues
+### Data Quality Issues
 - **Missing data**: [summary and how handled]
 - **Outliers**: [any concerns]
 - **Coding issues**: [any found and fixed]
 
-## Key Visualizations
+### Key Visualizations
 [Reference saved figures]
 
-## Design Verification
+### Design Verification
 - [Confirm data supports the identification strategy]
 - [Note any concerns]
 
-## Preliminary Observations
+### Preliminary Observations
 - [Anything notable in the descriptives]
 - [Any surprises or concerns]
 
-## Questions for User
+### Questions for User
 - [Any decisions that need user input]
 ```
 
@@ -224,5 +224,6 @@ Return a summary to the orchestrator that includes:
 3. Whether data supports the planned design
 4. Key observations from descriptives
 5. Questions for the user
+6. Confirmation that the Phase 1 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 2 until the user reviews the descriptives and confirms the sample.**

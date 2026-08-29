@@ -88,6 +88,8 @@ Text analysis results require careful interpretation. Overclaimingundermines cre
 
 ### 3. Write Results Narrative
 
+Present the results narrative directly in conversation — do not save it to a file. These are intermediate outputs intended to feed into writing skills (e.g., `quant-findings-writer`, `qual-findings-writer`), not standalone documents.
+
 Structure the narrative:
 
 **Opening:**
@@ -139,6 +141,8 @@ Structure the narrative:
 - "According to this measure..."
 
 ### 4. Write Limitations Section
+
+Present the limitations section directly in conversation alongside the results narrative — do not save it to a file. It feeds into writing skills alongside the results narrative.
 
 Every text analysis has limitations. Document:
 
@@ -206,7 +210,9 @@ All analyses use seed: [SEED]
 [Author contact for questions]
 ```
 
-### 6. Create Methods Section Draft
+### 6. Write Methods Section Draft
+
+Present the methods section draft directly in conversation — do not save it to a file. It is an intermediate output for use with writing skills.
 
 Write methods section following journal conventions:
 
@@ -247,20 +253,18 @@ output/
 │   ├── fig1_topic_prevalence.pdf
 │   ├── fig2_topic_words.pdf
 │   └── ...
-├── narrative/
-│   ├── results_section.md
-│   ├── methods_section.md
-│   └── limitations.md
 └── replication/
     └── [replication package]
 ```
 
+The results narrative, methods section, and limitations are presented in conversation — they feed directly into writing skills and are not saved as files.
+
 ## Final Memo
 
-Create `memos/phase5-output-memo.md`:
+Append a `## Phase 5: Output & Interpretation` section to `memos/analysis-memo.md`:
 
 ```markdown
-# Output Summary
+## Phase 5: Output & Interpretation
 
 ## Deliverables
 
@@ -271,11 +275,6 @@ Create `memos/phase5-output-memo.md`:
 ### Figures
 1. [Figure 1]: [description, location]
 2. [Figure 2]: [description, location]
-
-### Narrative Sections
-- Results: [location]
-- Methods: [location]
-- Limitations: [location]
 
 ### Replication Materials
 [Location, completeness status]
@@ -310,8 +309,10 @@ Create `memos/phase5-output-memo.md`:
 
 ## When You're Done
 
+Commit the final state: `git add memos/analysis-memo.md output/ && git commit -m "text-analyst: Phase 5 complete"`
+
 Return a summary to the orchestrator that includes:
-1. List of deliverables produced
+1. List of deliverables produced (tables, figures, replication materials)
 2. Key findings summary (2-3 sentences)
 3. Main limitations to acknowledge
 4. Replication package status

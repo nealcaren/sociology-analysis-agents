@@ -264,12 +264,12 @@ plot(mfx)
 
 ## Output: Results Report
 
-Create a results report (`memos/phase3-results-report.md`):
+Append a Phase 3 section to `memos/analysis-memo.md`:
 
 ```markdown
-# Main Results Report
+## Phase 3: Main Analysis
 
-## Summary of Findings
+### Summary of Findings
 
 **Main estimate**: [interpretation in words]
 
@@ -277,41 +277,41 @@ The preferred specification (Model X) shows that [treatment] is associated with
 a [magnitude] [direction] in [outcome]. This effect is [statistically significant
 at the X% level / not statistically significant].
 
-## Results Table
+### Results Table
 
 [Reference Table 2 or include formatted output]
 
-## Interpretation
+### Interpretation
 
-### Magnitude
+#### Magnitude
 - Point estimate: [value]
 - Units: [what this means]
 - Context: [comparison to mean/SD/other benchmark]
 
-### Precision
+#### Precision
 - Standard error: [value]
 - 95% CI: [lower, upper]
 - This is [precise/noisy] because [reason]
 
-### Stability
+#### Stability
 - The estimate [is stable / changes] across specifications
 - Adding controls [increases/decreases/doesn't change] the estimate
 - This suggests [interpretation of stability pattern]
 
-## Diagnostic Checks
+### Diagnostic Checks
 - [Results of assumption tests]
 - [Any concerns raised]
 
-## Visualizations
+### Visualizations
 - Figure X: [description]
 - Figure Y: [description]
 
-## Preliminary Assessment
+### Preliminary Assessment
 - These results [support / do not support / partially support] the hypothesis
 - Key caveat: [main limitation]
 - Next step: robustness checks in Phase 4
 
-## Questions for User
+### Questions for User
 - [Any interpretive questions]
 - [Should we proceed to robustness?]
 ```
@@ -324,5 +324,6 @@ Return a summary to the orchestrator that includes:
 3. Whether results are stable across specifications
 4. Any diagnostic concerns
 5. Questions for the user
+6. Confirmation that the Phase 3 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 4 until the user reviews the main results.**

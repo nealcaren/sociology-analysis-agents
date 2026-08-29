@@ -277,47 +277,47 @@ sessionInfo()
 
 ## Output: Final Report
 
-Create the final synthesis (`memos/phase5-final-report.md`):
+Append a Phase 5 section to `memos/analysis-memo.md`:
 
 ```markdown
-# Analysis Summary
+## Phase 5: Output & Interpretation
 
-## Key Finding
+### Key Finding
 [One sentence summary of the main result]
 
-## Main Result
+### Main Result
 - **Effect size**: [estimate with CI]
 - **Significance**: [p-value or significance level]
 - **Interpretation**: [what this means substantively]
 
-## Robustness Assessment
+### Robustness Assessment
 - The finding [is/is not] robust to [list of checks]
 - Main concerns: [if any]
 
-## Output Files Created
+### Output Files Created
 
-### Tables
-- `table1_descriptives.tex`: Summary statistics
-- `table2_main.tex`: Main results
-- `table3_robustness.tex`: Robustness checks
+#### Tables
+- `output/tables/table1_descriptives.tex`: Summary statistics
+- `output/tables/table2_main.tex`: Main results
+- `output/tables/table3_robustness.tex`: Robustness checks
 
-### Figures
-- `figure1_trends.pdf`: Pre/post trends
-- `figure2_eventstudy.pdf`: Event study
-- `figure3_coefplot.pdf`: Coefficient plot
+#### Figures
+- `output/figures/figure1_trends.pdf`: Pre/post trends
+- `output/figures/figure2_eventstudy.pdf`: Event study
+- `output/figures/figure3_coefplot.pdf`: Coefficient plot
 
-### Replication Materials
-- `00_master.R`: Master script
+#### Replication Materials
+- `code/00_master.R`: Master script
 - `code/`: All analysis code
 - `data/clean/`: Analysis datasets
 
-## Results Narrative
+### Results Narrative
 [Draft paragraphs for the paper]
 
-## Limitations
+### Limitations
 [Honest assessment of limitations]
 
-## Conclusion
+### Conclusion
 [What can and cannot be concluded from this analysis]
 ```
 
@@ -368,5 +368,6 @@ Return a summary to the orchestrator that includes:
 4. Any remaining questions or concerns
 5. Confirmation that replication materials are ready
 6. Checklist tier achieved (minimum/strong/exemplary)
+7. Confirmation that the Phase 5 section was appended to `memos/analysis-memo.md`
 
 **The analysis is now complete.** All materials should be ready for paper writing.

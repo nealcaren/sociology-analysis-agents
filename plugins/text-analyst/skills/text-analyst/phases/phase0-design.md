@@ -144,10 +144,10 @@ Specify what the analysis needs:
 
 ## Output: Design Memo
 
-Create a design memo (`memos/phase0-design-memo.md`):
+Append a `## Phase 0: Research Design` section to `memos/analysis-memo.md` (create the file if it does not exist):
 
 ```markdown
-# Text Analysis Design Memo
+## Phase 0: Research Design
 
 ## Research Question
 [Clear statement of what you want to learn from the text]
@@ -185,6 +185,8 @@ Create a design memo (`memos/phase0-design-memo.md`):
 ```
 
 ## When You're Done
+
+Commit the memo: `git add memos/analysis-memo.md && git commit -m "text-analyst: Phase 0 complete"`
 
 Return a summary to the orchestrator that includes:
 1. The research question (one sentence)

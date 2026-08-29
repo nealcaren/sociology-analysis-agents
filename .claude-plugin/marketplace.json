@@ -5,7 +5,7 @@
     "email": "neal.caren@unc.edu"
   },
   "metadata": {
-    "description": "Claude Code skills for rigorous social science research and teaching: quantitative analysis, qualitative analysis, text analysis, and lecture design."
+    "description": "Claude Code skills for rigorous social science research: quantitative analysis, qualitative analysis, text analysis, causal design, and literature search."
   },
   "plugins": [
     {
@@ -59,24 +59,6 @@
         "coding",
         "sociology",
         "research"
-      ],
-      "strict": true
-    },
-    {
-      "name": "interview-writeup",
-      "source": "./plugins/interview-writeup",
-      "description": "Write-up support for qualitative interview research. Guides methods drafting, findings structure, quote use, and revision with quality checks.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "qualitative",
-        "interviews",
-        "writing",
-        "methods",
-        "sociology"
       ],
       "strict": true
     },
@@ -135,24 +117,6 @@
       "strict": true
     },
     {
-      "name": "lecture-designer",
-      "source": "./plugins/lecture-designer",
-      "description": "Transform textbook chapters into engaging, evidence-based lectures. Applies cognitive load theory, narrative design (ABT), active learning, and produces Quarto reveal.js slides.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "teaching",
-        "lectures",
-        "slides",
-        "pedagogy",
-        "active-learning"
-      ],
-      "strict": true
-    },
-    {
       "name": "lit-search",
       "source": "./plugins/lit-search",
       "description": "Build systematic literature databases using OpenAlex API. Phased workflow for search, screening, snowballing, annotation, and synthesis with structured user interaction.",
@@ -167,172 +131,6 @@
         "bibliography",
         "systematic-review",
         "research"
-      ],
-      "strict": true
-    },
-    {
-      "name": "lit-synthesis",
-      "source": "./plugins/lit-synthesis",
-      "description": "Deep reading and synthesis of literature corpus. Theoretical mapping, thematic clustering, and debate identification using Zotero MCP for full-text access.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "literature-synthesis",
-        "Zotero",
-        "theoretical-mapping",
-        "sociology",
-        "research"
-      ],
-      "strict": true
-    },
-    {
-      "name": "lit-writeup",
-      "source": "./plugins/lit-writeup",
-      "description": "Draft publication-ready Theory sections for sociology research. Guides structure, paragraph functions, sentence craft, and calibration based on analysis of 80 Social Problems/Social Forces articles.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "theory-section",
-        "writing",
-        "sociology",
-        "literature-review",
-        "research"
-      ],
-      "strict": true
-    },
-    {
-      "name": "interview-bookends",
-      "source": "./plugins/interview-bookends",
-      "description": "Write article introductions and conclusions for sociology interview research. Takes theory and findings sections as input; uses genre analysis of 80 articles to guide cluster-specific framing.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "introduction",
-        "conclusion",
-        "bookends",
-        "sociology",
-        "writing"
-      ],
-      "strict": true
-    },
-    {
-      "name": "genre-skill-builder",
-      "source": "./plugins/genre-skill-builder",
-      "description": "Meta-skill for creating genre-analysis-based writing skills. Analyzes a corpus of article sections, discovers clusters, and generates complete skills with phases, cluster guides, and techniques.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "meta-skill",
-        "genre-analysis",
-        "skill-builder",
-        "writing",
-        "research"
-      ],
-      "strict": true
-    },
-    {
-      "name": "methods-writer",
-      "source": "./plugins/methods-writer",
-      "description": "Draft publication-ready Methods sections for interview-based sociology articles. Three pathways (Efficient/Standard/Detailed) based on analysis of 77 Social Problems/Social Forces articles.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "methods",
-        "interviews",
-        "qualitative",
-        "sociology",
-        "writing"
-      ],
-      "strict": true
-    },
-    {
-      "name": "case-justification",
-      "source": "./plugins/case-justification",
-      "description": "Draft case justification sections for interview-based sociology articles. Five cluster styles (Minimal/Standard/Historical/Comparative/Policy) based on analysis of 32 Social Problems/Social Forces articles.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "case-background",
-        "research-setting",
-        "interviews",
-        "sociology",
-        "writing"
-      ],
-      "strict": true
-    },
-    {
-      "name": "revision-coordinator",
-      "source": "./plugins/revision-coordinator",
-      "description": "Orchestrate manuscript revision by routing feedback to specialized writing skills. Parses reviewer/editor feedback, maps to sections, dispatches to lit-writeup/methods-writer/interview-bookends/case-justification, ensures coherence.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "revision",
-        "feedback",
-        "R&R",
-        "manuscript",
-        "writing",
-        "coordination"
-      ],
-      "strict": true
-    },
-    {
-      "name": "bibliography-builder",
-      "source": "./plugins/bibliography-builder",
-      "description": "Build bibliographies from manuscript citations using Zotero. Extracts Author-Year in-text citations, matches against Zotero library via MCP, reviews issues, and generates formatted bibliographies in APA, ASA, or Chicago style.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "bibliography",
-        "citations",
-        "Zotero",
-        "APA",
-        "ASA",
-        "Chicago",
-        "references"
-      ],
-      "strict": true
-    },
-    {
-      "name": "peer-reviewer",
-      "source": "./plugins/peer-reviewer",
-      "description": "Simulate peer review by constructing reviewer personas from Zotero sources. Identifies relevant perspectives, retrieves full texts, builds reviewer profiles, and generates focused reviews on theory/methods and findings.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Neal Caren"
-      },
-      "license": "MIT",
-      "keywords": [
-        "peer-review",
-        "manuscript",
-        "feedback",
-        "Zotero",
-        "revision",
-        "writing"
       ],
       "strict": true
     }

@@ -127,10 +127,10 @@ Before running main models, document planned robustness checks:
 
 ## Output: Specification Memo
 
-Create a specification memo (`memos/phase2-specification-memo.md`):
+Append a `## Phase 2: Model Specification` section to `memos/analysis-memo.md` containing:
 
 ```markdown
-# Model Specification Memo
+## Phase 2: Model Specification
 
 ## Estimating Equation
 
@@ -207,6 +207,6 @@ Return a summary to the orchestrator that includes:
 2. Fixed effects structure and clustering
 3. The planned specification sequence
 4. Pre-specified robustness checks
-5. Any questions requiring user input
+5. Confirmation that Phase 2 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 3 until the user approves the specification.**

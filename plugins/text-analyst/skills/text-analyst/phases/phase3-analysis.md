@@ -199,10 +199,10 @@ Provide preliminary interpretation with appropriate caveats:
 
 ## Output: Results Summary
 
-Create `memos/phase3-results-summary.md`:
+Append a `## Phase 3: Main Analysis` section to `memos/analysis-memo.md`:
 
 ```markdown
-# Analysis Results Summary
+## Phase 3: Main Analysis
 
 ## Model Fit
 
@@ -229,8 +229,8 @@ Create `memos/phase3-results-summary.md`:
 ## Visualizations
 
 [Reference to saved figures]
-- Figure 1: [description]
-- Figure 2: [description]
+- Figure 1: [description] (`output/figures/...`)
+- Figure 2: [description] (`output/figures/...`)
 
 ## Deviations from Specification
 
@@ -265,6 +265,8 @@ Before declaring Phase 3 complete:
 - [ ] No obvious errors or artifacts
 
 ## When You're Done
+
+Commit progress: `git add memos/analysis-memo.md output/ code/ && git commit -m "text-analyst: Phase 3 complete"`
 
 Return a summary to the orchestrator that includes:
 1. Model fit assessment (did it work?)

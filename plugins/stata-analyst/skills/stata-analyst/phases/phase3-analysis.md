@@ -59,18 +59,13 @@ estimates store m4
 esttab m1 m2 m3 m4, se star(* 0.10 ** 0.05 *** 0.01) ///
     stats(N r2_a, labels("Observations" "Adj. R-squared"))
 
-* Publication table (RTF for Word)
-esttab m1 m2 m3 m4 using "$tables/table2_main.rtf", replace ///
-    se star(* 0.10 ** 0.05 *** 0.01) ///
+* Publication table (LaTeX)
+esttab m1 m2 m3 m4 using "$tables/table2_main.tex", replace ///
+    se star(* 0.10 ** 0.05 *** 0.01) booktabs ///
     stats(N r2_a, labels("Observations" "Adj. R-squared") fmt(0 3)) ///
     title("Effect of Treatment on Outcome") ///
     mtitles("Baseline" "Unit FE" "Two-way FE" "Full Model") ///
     note("Standard errors clustered at [level] in parentheses. * p<0.1, ** p<0.05, *** p<0.01")
-
-* LaTeX version
-esttab m1 m2 m3 m4 using "$tables/table2_main.tex", replace ///
-    se star(* 0.10 ** 0.05 *** 0.01) booktabs ///
-    stats(N r2_a, labels("Observations" "Adj. R-squared") fmt(0 3))
 ```
 
 ### 3. Interpret the Results
@@ -106,8 +101,8 @@ margins, dydx(*) post
 estimates store ame
 
 * Create AME table
-esttab ame using "$tables/table2_ame.rtf", replace ///
-    cells(b(fmt(3)) se(fmt(3))) ///
+esttab ame using "$tables/table2_ame.tex", replace ///
+    cells(b(fmt(3)) se(fmt(3))) booktabs ///
     title("Average Marginal Effects") ///
     note("Standard errors in parentheses.")
 ```
@@ -264,10 +259,10 @@ graph export "$figures/margins.pdf", replace
 
 ## Output: Results Report
 
-Create a results report (`memos/phase3-results-report.md`):
+Append a `## Phase 3: Main Analysis` section to `memos/analysis-memo.md` containing:
 
 ```markdown
-# Main Results Report
+## Phase 3: Main Analysis
 
 ## Summary of Findings
 
@@ -323,6 +318,6 @@ Return a summary to the orchestrator that includes:
 2. Whether the effect is statistically significant
 3. Whether results are stable across specifications
 4. Any diagnostic concerns
-5. Questions for the user
+5. Confirmation that Phase 3 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 4 until the user reviews the main results.**

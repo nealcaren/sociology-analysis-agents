@@ -72,10 +72,10 @@ Specify what the data must contain:
 
 ## Output: Design Memo
 
-Create a design memo (`memos/phase0-design-memo.md`) containing:
+Append a `## Phase 0: Research Design` section to `memos/analysis-memo.md` (create the file if it does not exist) containing:
 
 ```markdown
-# Research Design Memo
+## Phase 0: Research Design
 
 ## Research Question
 [Clear statement of the question]
@@ -122,6 +122,6 @@ Return a summary to the orchestrator that includes:
 2. Key assumptions and whether they seem plausible
 3. Main threats and planned mitigations
 4. Any questions or concerns for the user
-5. Confirmation that design memo was created
+5. Confirmation that Phase 0 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 1 until the user confirms the research design.**

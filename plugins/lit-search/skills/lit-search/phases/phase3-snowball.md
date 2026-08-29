@@ -8,8 +8,8 @@ Citation networks reveal the intellectual structure of a field. Backward snowbal
 
 ## Prerequisites
 
-- Load `data/screened/included.json`
-- Read `memos/scope.md` for inclusion criteria
+- Load `data/database.json` (filter to papers where `screening_status == "include"`)
+- Read `memos/search-memo.md` for inclusion criteria
 
 ## Your Tasks
 
@@ -200,21 +200,21 @@ Create a simple network summary:
 
 ## Output Files
 
-Save to `data/screened/included_with_snowball.json`:
+Merge approved snowball additions into `data/database.json`. Each new paper record gets `screening_status: "include"` and a `snowball_source` field (e.g., `"backward"` or `"forward"`). Update the top-level metadata:
 
 ```python
-output = {
-    "snowball_metadata": {
-        "date": "2024-01-15",
-        "backward_candidates_found": 89,
-        "forward_candidates_found": 124,
-        "approved_additions": 23
-    },
-    "papers": merged_corpus
+database["snowball_metadata"] = {
+    "date": "2024-01-15",
+    "backward_candidates_found": 89,
+    "forward_candidates_found": 124,
+    "approved_additions": 23
 }
+
+with open("data/database.json", "w") as f:
+    json.dump(database, f, indent=2)
 ```
 
-Also update `memos/screening_log.md` with snowball decisions.
+Then append a `## Phase 3: Snowballing` section to `memos/search-memo.md` with the snowball summary and citation network notes.
 
 ## Guiding Principles
 
@@ -226,6 +226,6 @@ Also update `memos/screening_log.md` with snowball decisions.
 ## When You're Done
 
 Tell the orchestrator:
-> "Phase 3 complete. Snowballing found N backward and M forward candidates. X approved additions merged. Expanded corpus now contains Y papers. Ready for full text acquisition."
+> "Phase 3 complete. Snowballing found N backward and M forward candidates. X approved additions merged into data/database.json. Expanded corpus now contains Y papers. Phase 3 summary appended to memos/search-memo.md. Ready for full text acquisition."
 
 **Do not proceed to Phase 4 until the user approves snowball additions.**

@@ -129,46 +129,46 @@ Before running main models, document planned robustness checks:
 
 ## Output: Specification Memo
 
-Create a specification memo (`memos/phase2-specification-memo.md`):
+Append a Phase 2 section to `memos/analysis-memo.md`:
 
 ```markdown
-# Model Specification Memo
+## Phase 2: Model Specification
 
-## Estimating Equation
+### Estimating Equation
 
 [LaTeX or clear written equation]
 
-## Variable Definitions
+### Variable Definitions
 
 | Variable | Name | Definition | Measurement |
 |----------|------|------------|-------------|
 | ... | | | |
 
-## Fixed Effects
+### Fixed Effects
 [Structure and justification]
 
-## Standard Errors
+### Standard Errors
 Clustered at: [level]
 Justification: [why]
 
-## Specification Sequence
+### Specification Sequence
 
 | Model | Specification | Purpose |
 |-------|---------------|---------|
 | (1) | | |
 | ... | | |
 
-## Pre-Specified Robustness Checks
+### Pre-Specified Robustness Checks
 1. [Check 1]
 2. [Check 2]
 ...
 
-## Pre-Specified Subgroup Analyses
+### Pre-Specified Subgroup Analyses
 1. [Subgroup 1]
 2. [Subgroup 2]
 ...
 
-## Code Skeleton
+### Code Skeleton
 
 ```r
 library(fixest)
@@ -190,7 +190,7 @@ models <- list(
 )
 ```
 
-## Questions for User
+### Questions for User
 [Any specification decisions that need input]
 ```
 
@@ -202,5 +202,6 @@ Return a summary to the orchestrator that includes:
 3. The planned specification sequence
 4. Pre-specified robustness checks
 5. Any questions requiring user input
+6. Confirmation that the Phase 2 section was appended to `memos/analysis-memo.md`
 
 **Do not proceed to Phase 3 until the user approves the specification.**

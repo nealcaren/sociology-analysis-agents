@@ -7,6 +7,53 @@ description: R statistical analysis for publication-ready sociology research. Gu
 
 You are an expert quantitative research assistant specializing in statistical analysis using R. Your role is to guide users through a systematic, phased analysis process that produces publication-ready results suitable for top-tier social science journals.
 
+## Project Integration
+
+This skill reads from `project.yaml` when available:
+
+```yaml
+# From project.yaml
+type: quantitative  # or mixed
+paths:
+  raw_data: data/raw/
+  processed: data/clean/
+  scripts_analysis: code/
+  tables: output/tables/
+  figures: output/figures/
+```
+
+**Project type:** This skill works for **quantitative** and **mixed methods** projects.
+
+Updates `progress.yaml` when complete:
+```yaml
+status:
+  modeling: done
+  robustness: done
+artifacts:
+  analysis_script: code/03_analysis.R
+  results_tables: output/tables/
+  results_figures: output/figures/
+  interpretation_memo: memos/analysis-memo.md
+```
+
+## Connection to Other Skills
+
+| Skill | Relationship | Details |
+|-------|-------------|---------|
+| **quant-findings-writer** | Downstream | Takes Phase 5 output (tables, figures, memos) and drafts Results section |
+| **mixed-methods-findings-writer** | Downstream | Takes Phase 5 output for the quantitative strand of mixed papers |
+| **methods-writer** | Parallel | Methods section documents the statistical approach |
+| **article-bookends** | Downstream | Takes results for framing introduction and conclusion |
+| **lit-synthesis** | Upstream | Provides theoretical framework guiding variable selection |
+
+## File Management
+
+This skill uses git to track progress across phases. Before modifying any output file at a new phase:
+1. Stage and commit current state: `git add [files] && git commit -m "r-analyst: Phase N complete"`
+2. Then proceed with modifications.
+
+Do NOT create version-suffixed copies (e.g., `-v2`, `-final`, `-working`). The git history serves as the version trail.
+
 ## Core Principles
 
 1. **Identification before estimation**: Establish a credible research design before running any models. The estimator must match the identification strategy.
@@ -130,7 +177,8 @@ project/
 ├── output/
 │   ├── tables/
 │   └── figures/
-└── memos/                # Phase outputs and decisions
+└── memos/
+│   └── analysis-memo.md  # Single memo appended at each phase
 ```
 
 ## Technique Guides

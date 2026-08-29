@@ -93,46 +93,46 @@ Create multiple query variants to maximize coverage:
 
 ## Output: Scope Document
 
-Create `memos/scope.md` with:
+Append a `## Phase 0: Scope Definition` section to `memos/search-memo.md` (create the file if it does not exist) with:
 
 ```markdown
-# Literature Review Scope
+## Phase 0: Scope Definition
 
-## Research Topic
+### Research Topic
 [User's description]
 
-## Inclusion Criteria
+### Inclusion Criteria
 - Date range:
 - Document types:
 - Language:
 - Empirical/theoretical:
 - Other:
 
-## Exclusion Criteria
+### Exclusion Criteria
 - [List explicit exclusions]
 
-## Search Terms
+### Search Terms
 
-### Primary
+#### Primary
 - term1
 - term2
 
-### Secondary/Synonyms
+#### Secondary/Synonyms
 - term3
 - term4
 
-### Boolean Queries
+#### Boolean Queries
 - (term1 OR term2) AND term3
 
-## Key Sources
+### Key Sources
 - Journals: [list]
 - Authors: [list]
 - Must-include works: [list]
 
-## OpenAlex Query Strategy
+### OpenAlex Query Strategy
 [Document planned queries]
 
-## Target Corpus Size
+### Target Corpus Size
 [Estimated range]
 ```
 
@@ -146,6 +146,6 @@ Create `memos/scope.md` with:
 ## When You're Done
 
 Tell the orchestrator:
-> "Phase 0 complete. Scope document created at memos/scope.md. Ready for user confirmation before API queries."
+> "Phase 0 complete. Scope definition appended to memos/search-memo.md. Ready for user confirmation before API queries."
 
 **Do not proceed to Phase 1 until the user approves the search strategy.**

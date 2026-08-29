@@ -151,10 +151,10 @@ Create at minimum:
 
 ## Output: Corpus Report
 
-Create a corpus report (`memos/phase1-corpus-report.md`):
+Append a `## Phase 1: Corpus Preparation` section to `memos/analysis-memo.md`:
 
 ```markdown
-# Corpus Exploration Report
+## Phase 1: Corpus Preparation
 
 ## Corpus Overview
 
@@ -198,9 +198,9 @@ Create a corpus report (`memos/phase1-corpus-report.md`):
 ## Visualizations
 
 [Include or reference figures]
-- Figure 1: Document length distribution
-- Figure 2: Top terms frequency
-- Figure 3: Documents over time
+- Figure 1: Document length distribution (`output/figures/fig1_doc_lengths.pdf`)
+- Figure 2: Top terms frequency (`output/figures/fig2_top_terms.pdf`)
+- Figure 3: Documents over time (`output/figures/fig3_docs_over_time.pdf`)
 
 ## Sample Documents
 
@@ -282,6 +282,8 @@ print(word_counts.most_common(50))
 ```
 
 ## When You're Done
+
+Commit progress: `git add memos/analysis-memo.md output/figures/ && git commit -m "text-analyst: Phase 1 complete"`
 
 Return a summary to the orchestrator that includes:
 1. Corpus size (documents, tokens, vocabulary)

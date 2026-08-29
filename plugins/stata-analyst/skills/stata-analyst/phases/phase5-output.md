@@ -26,24 +26,24 @@ Analysis isn't complete until it's communicated. This phase transforms results i
 ```stata
 * Summary statistics
 estpost summarize outcome treatment control1 control2
-esttab using "$tables/table1_descriptives.rtf", replace ///
-    cells("count(fmt(0)) mean(fmt(2)) sd(fmt(2)) min(fmt(2)) max(fmt(2))") ///
+esttab using "$tables/table1_descriptives.tex", replace ///
+    cells("count(fmt(0)) mean(fmt(2)) sd(fmt(2)) min(fmt(2)) max(fmt(2))") booktabs ///
     title("Summary Statistics") ///
     note("Sample: [description]. Source: [data source].")
 
 * Balance table (if applicable)
 estpost ttest outcome control1 control2, by(treatment)
-esttab using "$tables/table1_balance.rtf", replace ///
+esttab using "$tables/table1_balance.tex", replace ///
     cells("mu_1(fmt(2)) mu_2(fmt(2)) b(fmt(2) star)") ///
     collabels("Control" "Treated" "Difference") ///
-    star(* 0.10 ** 0.05 *** 0.01) ///
+    star(* 0.10 ** 0.05 *** 0.01) booktabs ///
     title("Balance Across Treatment Groups")
 ```
 
 **Table 2: Main Results**
 ```stata
-esttab m1 m2 m3 m4 using "$tables/table2_main.rtf", replace ///
-    se star(* 0.10 ** 0.05 *** 0.01) ///
+esttab m1 m2 m3 m4 using "$tables/table2_main.tex", replace ///
+    se star(* 0.10 ** 0.05 *** 0.01) booktabs ///
     keep(treatment) ///
     coeflabels(treatment "Treatment Effect") ///
     stats(N r2_a, labels("Observations" "Adj. R-squared") fmt(0 3)) ///
@@ -52,18 +52,12 @@ esttab m1 m2 m3 m4 using "$tables/table2_main.rtf", replace ///
     addnotes("Standard errors clustered at [level] in parentheses." ///
              "All models include [FE description]." ///
              "* p<0.1, ** p<0.05, *** p<0.01")
-
-* LaTeX version
-esttab m1 m2 m3 m4 using "$tables/table2_main.tex", replace ///
-    se star(* 0.10 ** 0.05 *** 0.01) booktabs ///
-    keep(treatment) ///
-    stats(N r2_a, labels("Observations" "Adj. R-squared") fmt(0 3))
 ```
 
 **Table 3: Robustness**
 ```stata
-esttab main robust1 robust2 robust3 robust4 using "$tables/table3_robustness.rtf", replace ///
-    se star(* 0.10 ** 0.05 *** 0.01) ///
+esttab main robust1 robust2 robust3 robust4 using "$tables/table3_robustness.tex", replace ///
+    se star(* 0.10 ** 0.05 *** 0.01) booktabs ///
     keep(treatment) ///
     mtitles("Main" "Alt 1" "Alt 2" "Alt 3" "Alt 4") ///
     title("Robustness Checks") ///
@@ -271,10 +265,10 @@ log close
 
 ## Output: Final Report
 
-Create the final synthesis (`memos/phase5-final-report.md`):
+Append a `## Phase 5: Output & Interpretation` section to `memos/analysis-memo.md` containing:
 
 ```markdown
-# Analysis Summary
+## Phase 5: Output & Interpretation
 
 ## Key Finding
 [One sentence summary of the main result]
@@ -291,9 +285,9 @@ Create the final synthesis (`memos/phase5-final-report.md`):
 ## Output Files Created
 
 ### Tables
-- `table1_descriptives.rtf`: Summary statistics
-- `table2_main.rtf`: Main results
-- `table3_robustness.rtf`: Robustness checks
+- `table1_descriptives.tex`: Summary statistics
+- `table2_main.tex`: Main results
+- `table3_robustness.tex`: Robustness checks
 
 ### Figures
 - `figure1_trends.pdf`: Pre/post trends

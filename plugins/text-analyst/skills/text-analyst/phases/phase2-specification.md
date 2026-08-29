@@ -177,10 +177,10 @@ Document what outputs to produce:
 
 ### 5. Create Specification Memo
 
-Create `memos/phase2-specification-memo.md`:
+Append a `## Phase 2: Method Specification` section to `memos/analysis-memo.md`:
 
 ```markdown
-# Method Specification Memo
+## Phase 2: Method Specification
 
 ## Preprocessing Pipeline
 
@@ -282,6 +282,8 @@ Before trusting dictionary results:
 4. Consider false positives and negatives
 
 ## When You're Done
+
+Commit the memo: `git add memos/analysis-memo.md && git commit -m "text-analyst: Phase 2 complete"`
 
 Return a summary to the orchestrator that includes:
 1. Final preprocessing pipeline

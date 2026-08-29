@@ -8,8 +8,8 @@ Screening is where human judgment meets algorithmic assistance. You'll auto-excl
 
 ## Prerequisites
 
-- Read `memos/scope.md` for inclusion/exclusion criteria
-- Load `data/raw/search_results.json`
+- Read `memos/search-memo.md` for inclusion/exclusion criteria
+- Load `data/database.json`
 
 ## Your Tasks
 
@@ -151,28 +151,28 @@ After user input on borderline cases:
 ...
 ```
 
-### 6. Save Screened Corpus
+### 6. Update Database with Screening Decisions
 
-Save included papers to `data/screened/included.json`:
+Add a `screening_status` field to each paper record in `data/database.json` (values: `"include"`, `"exclude"`, or `"borderline"`), along with a `screening_rationale` field. Update the top-level metadata to record screening counts:
 
 ```python
-included = [p for p in papers if screening_decisions[p["openalex_id"]] == "include"]
+for paper in database["papers"]:
+    decision, rationale = screening_decisions[paper["openalex_id"]]
+    paper["screening_status"] = decision
+    paper["screening_rationale"] = rationale
 
-output = {
-    "screening_metadata": {
-        "date": "2024-01-15",
-        "criteria": criteria,
-        "total_screened": len(papers),
-        "total_included": len(included)
-    },
-    "papers": included
+database["screening_metadata"] = {
+    "date": "2024-01-15",
+    "criteria": criteria,
+    "total_screened": len(database["papers"]),
+    "total_included": sum(1 for p in database["papers"] if p["screening_status"] == "include")
 }
 
-with open("data/screened/included.json", "w") as f:
-    json.dump(output, f, indent=2)
+with open("data/database.json", "w") as f:
+    json.dump(database, f, indent=2)
 ```
 
-Also save the full log to `memos/screening_log.md`.
+Then append a `## Phase 2: Screening` section to `memos/search-memo.md` with the screening summary (counts by decision category and top exclusion reasons).
 
 ## Screening Heuristics
 
@@ -204,6 +204,6 @@ When in doubt, use these guidelines:
 ## When You're Done
 
 Tell the orchestrator:
-> "Phase 2 complete. Screened N papers: X included, Y excluded, Z user-reviewed. Screened corpus saved to data/screened/included.json. Screening log at memos/screening_log.md. Ready for snowballing."
+> "Phase 2 complete. Screened N papers: X included, Y excluded, Z user-reviewed. Screening status fields added to data/database.json. Phase 2 summary appended to memos/search-memo.md. Ready for snowballing."
 
 **Do not proceed to Phase 3 until the user confirms screening decisions.**

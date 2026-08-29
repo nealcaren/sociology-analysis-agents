@@ -228,10 +228,10 @@ Example: Compare dictionary sentiment to ML sentiment.
 
 ## Output: Validation Report
 
-Create `memos/phase4-validation-report.md`:
+Append a `## Phase 4: Validation & Robustness` section to `memos/analysis-memo.md`:
 
 ```markdown
-# Validation Report
+## Phase 4: Validation & Robustness
 
 ## Human Validation
 
@@ -291,6 +291,8 @@ Create `memos/phase4-validation-report.md`:
 ```
 
 ## When You're Done
+
+Commit progress: `git add memos/analysis-memo.md output/ && git commit -m "text-analyst: Phase 4 complete"`
 
 Return a summary to the orchestrator that includes:
 1. Human validation results (what proportion validated?)

@@ -8,8 +8,8 @@ The value of a literature review is in the synthesis. This phase transforms indi
 
 ## Prerequisites
 
-- Load `data/annotated/database.json`
-- Review user's notes from annotation phase
+- Load `data/database.json`
+- Review the Phase 5 section in `memos/search-memo.md` for annotation notes
 
 ## Your Tasks
 
@@ -67,16 +67,17 @@ def generate_bibtex(papers, output_path="output/references.bib"):
     bibtex_entries = []
 
     for paper in papers:
-        # Create cite key: AuthorYear
-        first_author = paper["authors"][0].split()[-1] if paper["authors"] else "Unknown"
-        cite_key = f"{first_author}{paper['year']}"
+        # Use citation_key from database (generated in Phase 1)
+        cite_key = paper.get("citation_key", f"{paper['authors'][0].split()[-1] if paper['authors'] else 'Unknown'}{paper['year']}")
 
         entry = f"""@article{{{cite_key},
   author = {{{" and ".join(paper["authors"])}}},
   title = {{{paper["title"]}}},
   journal = {{{paper.get("journal", "")}}},
   year = {{{paper["year"]}}},
-  doi = {{{paper.get("doi", "").replace("https://doi.org/", "")}}}
+  doi = {{{paper.get("doi", "").replace("https://doi.org/", "")}}},
+  pdf_path = {{}},
+  md_path = {{}}
 }}
 """
         bibtex_entries.append(entry)
@@ -85,50 +86,22 @@ def generate_bibtex(papers, output_path="output/references.bib"):
         f.write("\n".join(bibtex_entries))
 ```
 
-### 3. Create Queryable Database Export
+### Ingest PDFs into the Local BibTeX Pipeline
 
-Export in formats useful for analysis:
+After generating `output/references.bib`, run `ingest.py` to register PDFs and convert them to markdown. This populates the `pdf_path` and `md_path` fields in each entry so downstream skills can locate full text by citation key:
 
-```python
-import pandas as pd
-
-def export_database(annotations, output_dir="output"):
-    """Export database in multiple formats."""
-
-    # Flatten for tabular export
-    flat_records = []
-    for paper in annotations:
-        record = {
-            "title": paper["title"],
-            "authors": "; ".join(paper["authors"]),
-            "year": paper["year"],
-            "journal": paper["journal"],
-            "doi": paper["doi"],
-            "research_question": paper["research_question"],
-            "theory": paper["theoretical_framework"],
-            "design": paper["methods"]["design"],
-            "sample_size": paper["methods"]["sample"],
-            "geography": paper["methods"]["geographic_scope"],
-            "key_findings": " | ".join(paper["key_findings"]),
-            "tags": ", ".join(paper.get("tags", [])),
-            "relevance": paper.get("relevance_to_project", ""),
-            "quality": paper.get("quality_assessment", "")
-        }
-        flat_records.append(record)
-
-    df = pd.DataFrame(flat_records)
-
-    # CSV for spreadsheet use
-    df.to_csv(f"{output_dir}/database.csv", index=False)
-
-    # Excel for easier filtering
-    df.to_excel(f"{output_dir}/database.xlsx", index=False)
-
-    # JSON remains primary format
-    # Already have this in data/annotated/database.json
+```bash
+python ingest.py --bib output/references.bib --pdf-dir fulltext/
 ```
 
-### 4. Thematic Analysis
+`ingest.py` will:
+1. Match each PDF filename (or DOI-derived name) to its BibTeX entry by citation key
+2. Convert the PDF to a markdown file alongside it
+3. Write the resolved `pdf_path` and `md_path` back into `output/references.bib`
+
+Once ingested, `[@citationKey]` references in downstream writing skills resolve to the correct local files via `references.bib`.
+
+### 3. Thematic Analysis
 
 Identify major themes across the corpus:
 
@@ -163,7 +136,7 @@ Identify major themes across the corpus:
 ### Theme 3: [Continue for other major themes]
 ```
 
-### 5. Identify Research Gaps
+### 4. Identify Research Gaps
 
 Analyze what's missing:
 
@@ -200,7 +173,7 @@ Analyze what's missing:
 2. **Movement-to-movement dynamics**: How participation in one affects another
 ```
 
-### 6. Map Debates and Positions
+### 5. Map Debates and Positions
 
 Identify ongoing disagreements:
 
@@ -227,7 +200,7 @@ Felt injustice is necessary condition for participation.
 [...]
 ```
 
-### 7. Generate Field Summary
+### 6. Generate Field Summary
 
 Create an executive summary:
 
@@ -265,11 +238,10 @@ Create the following in `output/`:
 | File | Purpose |
 |------|---------|
 | `bibliography.md` | Annotated bibliography for reading |
-| `database.json` | Structured, queryable database |
-| `database.csv` | Spreadsheet-friendly export |
-| `database.xlsx` | Excel with filtering |
 | `references.bib` | BibTeX for citation managers |
 | `synthesis.md` | Thematic summary and gaps |
+
+The primary database (`data/database.json`) already exists from earlier phases and does not need to be re-exported.
 
 ## Final Package
 
@@ -291,17 +263,17 @@ Your literature database on "Social Movement Participation" is ready.
    - All papers with structured annotations
    - Organized thematically
 
-2. **Searchable database** (`output/database.json`, `.csv`, `.xlsx`)
-   - Query by theory, method, findings
-   - Filter by year, journal, tags
+2. **Citation file** (`output/references.bib`)
+   - Ready for Mendeley, LaTeX, or local library pipeline
 
-3. **Citation file** (`output/references.bib`)
-   - Ready for Zotero, Mendeley, or LaTeX
-
-4. **Synthesis document** (`output/synthesis.md`)
+3. **Synthesis document** (`output/synthesis.md`)
    - Thematic summary
    - Research gaps identified
    - Scholarly debates mapped
+
+4. **Full database** (`data/database.json`)
+   - Complete annotated database from all phases
+   - Query by theory, method, findings, tags
 
 ### Next Steps
 - Review the synthesis for accuracy
@@ -319,6 +291,6 @@ Your literature database on "Social Movement Participation" is ready.
 ## When You're Done
 
 Tell the orchestrator:
-> "Phase 6 complete. Literature review package generated with annotated bibliography, queryable database (JSON/CSV/Excel), BibTeX, and synthesis document. All outputs in output/ directory. Review complete."
+> "Phase 6 complete. Literature review package generated: annotated bibliography (output/bibliography.md), BibTeX (output/references.bib), and synthesis document (output/synthesis.md). Full annotated database at data/database.json. Review complete."
 
 The user now has a complete, systematic literature database ready for use in their research.

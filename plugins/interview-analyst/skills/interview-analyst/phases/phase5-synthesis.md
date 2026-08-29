@@ -243,7 +243,7 @@ diverse research team].
 
 ### 7. Build the Quote Database for Writeup
 
-This is the key handoff to the interview-writeup skill. Reorganize the person-level material from Phase 2 participant profiles into a finding-level database ready for drafting.
+This is the key handoff to the qual-findings-writer skill. Reorganize the person-level material from Phase 2 participant profiles into a finding-level database ready for drafting.
 
 **For each major finding/mechanism:**
 
@@ -325,22 +325,23 @@ Save all outputs to `/analysis/phase5-reports/`:
    - Echo quotes compiled
    - Prevalence noted
    - Attribution complete
-   *(This is the primary handoff to interview-writeup)*
+   *(This is the primary handoff to qual-findings-writer)*
 4. **evidence-selection.md** - Selected quotes organized by claim (legacy format)
 5. **alternative-explanations.md** - Addressed objections and alternatives
 6. **limitations.md** - Honest assessment of limitations
 7. **draft-introduction.md** - Draft introduction section
-8. **draft-methods.md** - Draft methods section
-9. **draft-findings.md** - Draft findings/analysis sections
-10. **draft-discussion.md** - Draft discussion section
-11. **evidence-appendix.md** - Extended evidence compilation
-12. **phase5-report.md** - Executive summary including:
+8. **draft-findings.md** - Draft findings/analysis sections
+9. **draft-discussion.md** - Draft discussion section
+10. **evidence-appendix.md** - Extended evidence compilation
+11. **phase5-report.md** - Executive summary including:
     - Core argument in brief
     - Structure overview
     - Key evidence highlights
     - Main limitations
     - Questions for the user
     - Next steps for revision
+
+**Note**: Drafting the Methods section is a separate writing task, handled outside this analysis skill. The Methods templates earlier in this document are preserved as reference for when you write it up.
 
 ## Writing Principles
 
